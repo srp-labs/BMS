@@ -19,7 +19,7 @@ export default theme => ({
         flexGrow: 2,
         marginTop: 64,
 
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('xs')]: {
             marginTop: 56,
         }
     },
