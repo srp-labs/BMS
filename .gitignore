@@ -1,0 +1,14 @@
+#Exclude Files here
+*.pyc
+*.pdf
+*.csv
+yarn-error.log
+
+#Exclude Directories here
+node_modules/
+__pycache__/
+.docz/
+.vscode
+/client/src/services/baseUrl.js
+/server/static/
+/server/media/
