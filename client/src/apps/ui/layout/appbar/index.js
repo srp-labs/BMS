@@ -10,8 +10,10 @@ import {
 
 import {
     Menu,
+    People,
 } from '@material-ui/icons';
 
+import Link from './link';
 import styles from './styles';
 
 const Appbar = ({ className, classes, ...props }) => {
@@ -21,20 +23,17 @@ const Appbar = ({ className, classes, ...props }) => {
             {...props}
         >
             <Toolbar>
-                <Hidden smUp>
+                <Hidden xlDown>
                     <Menu color="primary" />    
                 </Hidden>
                 <div className={classes.linksContainer}>
-                    <Typography className={classes.link}>
-                        H<small>ome</small>
-                    </Typography>
-                    <Typography className={classes.link}>
-                        A<small>rticles</small>
-                    </Typography>
-                    <Typography className={classes.link}>
-                        A<small>bout</small> U<small>s</small> 
-                    </Typography>
+                    <Link to="/home" label="Home" />
+                    <Link to="/articles" label="Articles" />
+                    <Link to="/about" label="About Us" />
                 </div>
+                <Hidden xlDown>
+                    <People color="primary" />    
+                </Hidden>
             </Toolbar>
         </AppBar>
     )
