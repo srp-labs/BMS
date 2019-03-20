@@ -16,7 +16,7 @@ export default theme => ({
             bottom: -theme.spacing.unit / 2,
             width: '80%',
             height: 2,
-            backgroundColor: theme.palette.primary.main,
+            backgroundColor: theme.palette.getContrastText('#008f68'),
             transform: 'translate(-50%, 50%)',
             opacity: 0,
             transition: `transform 0.25s,
@@ -39,5 +39,10 @@ export default theme => ({
     },
     text: {
         display: 'inline',
+        color: theme.palette.getContrastText('#008f68'),
+        
+        '&:not(:last-child)': {
+            marginRight: theme.spacing.unit,
+        }
     },
 });

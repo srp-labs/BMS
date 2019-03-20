@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { Children } from 'react';
 import classnames from 'classnames';
 import {
     withStyles,
 } from '@material-ui/core';
 import styles from './styles';
 
-const Main = ({ className, classes, ...props }) => {
+const Main = ({ children, className, classes, ...props }) => {
     return (
         <div 
             className={classnames(classes.root, className)}
             {...props}
         >
-            This is the main content.
+            {children}
         </div>
     )
 }
