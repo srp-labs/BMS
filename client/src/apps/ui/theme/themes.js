@@ -14,6 +14,9 @@ export const light = createMuiTheme({
         background: {
             appBar: '#f5f5f5',
         },
+        text: {
+            primary: '#FFF',
+        },
     },
     typography: {
         useNextVariants: true,
