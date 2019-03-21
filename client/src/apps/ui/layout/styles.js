@@ -1,7 +1,7 @@
 export default theme => ({
     root: {
         position: 'relative',
-        height: '100vh',
+        minHeight: '100vh',
         backgroundColor: '#21523e',
     },
     content: {
@@ -12,7 +12,7 @@ export default theme => ({
         minHeight: '100vh',
     },
     appbar: {
-        position: 'absolute',
+        position: 'fixed',
         top: 0,
         left: 0,
     },

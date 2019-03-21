@@ -5,6 +5,7 @@ import {
     Typography,
 } from '@material-ui/core';
 import PageContainer from '../../components/page-container';
+import ArticleCard from './article-card';
 import styles from './styles';
 
 import Logo from "../../../assets/images/logo.png";
@@ -24,8 +25,12 @@ const Home = ({classes, ...props}) => {
 
             <div className={classes.latestPostsSection}>
                 <Typography className={classes.latestPostsTitle}>
-                    <big>L</big>atest <big>P</big>osts</Typography>
-                {/* <ArticleCard /> */}
+                    <big>L</big>atest <big>P</big>osts
+                </Typography>
+                
+                <ArticleCard />
+
+                <ArticleCard />
             </div>
 
         </PageContainer>
