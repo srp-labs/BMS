@@ -10,9 +10,11 @@ import styles from './styles';
 const List = ({classes, ...props}) => {
     return (
         <PageContainer>
-            <ArticleCard />
+            <Grid container spacing={16} className={classes.cardContainer}>
+                <ArticleCard />
 
-            <ArticleCard />
+                <ArticleCard />
+            </Grid>
         </PageContainer>
     )
 }

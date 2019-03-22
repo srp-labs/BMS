@@ -53,4 +53,9 @@ export default theme => ({
         textAlign: 'center',
         textTransform: 'uppercase',
     },
+
+    cardContainer: {
+        width: '100%',
+        margin: `${2 * theme.spacing.unit}px 0`,
+    },
 })

@@ -1,17 +1,18 @@
 export default theme => ({
     root: {
         position: 'relative',
-        // margin: 2 * theme.spacing.unit,
+        display: 'block',
+        verticalAlign: 'initial',
+        textAlign: 'initial',
         padding: 2 * theme.spacing.unit,
-        backgroundColor: '#FFF',
+        backgroundColor: '#0A1F18',
         borderRadius: 4,
         boxShadow: theme.shadows[1],
         overflow: 'hidden',
-        transition: 'transform 0.25s, box-shadow 0.25s',
+        transition: 'box-shadow 0.25s',
 
         '&:hover': {
-            boxShadow: theme.shadows[2],
-            transform: 'translateY(-4px)',
+            boxShadow: theme.shadows[10],
         },
 
         '& > *': {
@@ -21,12 +22,12 @@ export default theme => ({
 
     cardTitle: {
         display: 'flex',
+        color: '#FFF',
     },
     
     articleTitle: {
         fontSize: '1.2em',
         fontWeight: 500,
-        color: '#000',
         flexGrow: 2,
     },
 
@@ -35,48 +36,48 @@ export default theme => ({
     },
 
     articleImage: {
+        width: 64,
+        height: 64,
+        alignSelf: 'center',
         marginRight: 2 * theme.spacing.unit,
     },
 
     articleDescription: {
         fontSize: '0.9em',
         fontWeight: 200,
-        color: '#000000AA',
+        wordSpacing: '1px',
+        lineHeight: '200%',
     },
 
     divider: {
         width: '100%',
         marginLeft: 'auto',
         marginRight: 'auto',
-        backgroundColor: '#f0598855',
+        backgroundColor: 'rgba(107,183,86,1)',
     },
 
     metaInformation: {
         display: 'flex',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        color: '#cacaca',
+
+        [theme.breakpoints.down('md')]: {
+            justifyContent: 'space-around',
+        }
+
     },
 
-    writer: {
-        color: '#000',
+    metaText: {
+        display: 'flex',
+        alignItems: 'center',
+        fontWeight: 200,
         marginLeft: theme.spacing.unit / 2,
-        marginRight: theme.spacing.unit / 2,
-    },
+        marginRight: theme.spacing.unit,
 
-    date: {
-        color: '#000',
-        marginLeft: theme.spacing.unit / 2,
-        marginRight: theme.spacing.unit / 2,
-    },
-
-    readTime: {
-        color: '#000',
-        marginLeft: theme.spacing.unit / 2,
-        marginRight: theme.spacing.unit / 2,
-    },
-
-    extras: {
-        color: '#000',
-        marginLeft: theme.spacing.unit / 2,
-        marginRight: theme.spacing.unit / 2,
+        '& > svg': {
+            marginRight: theme.spacing.unit / 2,
+        },
     },
 
     bottomHighlight: {
@@ -86,6 +87,6 @@ export default theme => ({
         height: '4px',
         width: '100%',  
         marginBottom: 0,
-        backgroundColor: '#f05988',
+        backgroundColor: 'rgba(107,183,86,1)',
     },
 })

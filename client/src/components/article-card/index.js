@@ -6,6 +6,7 @@ import {
     Typography,
     Avatar,
     Divider,
+    ButtonBase,
 } from '@material-ui/core';
 
 import {
@@ -22,12 +23,12 @@ import Jatin from '../../../assets/images/jatin.jpg';
 const ArticleCard = ({ classes, ...props }) => {
     return (
         <Grid item xs={12} md={6}>
-            <div className={classes.root}>
+            <ButtonBase className={classes.root}>
                 <div className={classes.cardTitle}>
                     <Typography className={classes.articleTitle}>
                         Introduction to Bulma with React
                     </Typography>
-                    <BookmarkBorder />
+                    {/* <BookmarkBorder /> */}
                 </div>
                 <div className={classes.cardContent}>
                     <Avatar src={Jatin} className={classes.articleImage} />
@@ -39,21 +40,21 @@ const ArticleCard = ({ classes, ...props }) => {
                 <Divider className={classes.divider} />
 
                 <div className={classes.metaInformation}>
-                    <Typography className={classes.writer}>
+                    <Typography className={classes.metaText}>
                         <People />
                         Jatin Goel
                     </Typography>
-                    <Typography className={classes.writer}>
+                    <Typography className={classes.metaText}>
                         <Today />
                         29th Feb, 2019
                     </Typography>
-                    <Typography className={classes.writer}>
+                    <Typography className={classes.metaText}>
                         <Timer />
                         3 min
                     </Typography>
                 </div>
                 <div className={classes.bottomHighlight} />
-            </div>
+            </ButtonBase>
         </Grid>
     )
 }

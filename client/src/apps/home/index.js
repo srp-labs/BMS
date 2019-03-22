@@ -29,13 +29,13 @@ const Home = ({classes, ...props}) => {
                     <big>L</big>atest <big>P</big>osts
                 </Typography>
                 
-                {/* <Grid container spacing={16}> */}
+                <Grid container spacing={16} className={classes.cardContainer}>
 
                     <ArticleCard />
 
                     <ArticleCard />
                 
-                {/* </Grid> */}
+                </Grid>
             </div>
 
         </PageContainer>
