@@ -1,3 +1,4 @@
-export { AuthRoute as default } from './auth-route';
-export { AuthWrapper as default } from './auth-wrapper';
-export { PageContainer as default } from './page-container';
+export { default as AuthRoute } from './auth-route';
+export { default as AuthWrapper } from './auth-wrapper';
+export { default as PageContainer } from './page-container';
+export { default as ArticleCard } from './article-card';

@@ -1,7 +1,7 @@
 export default theme => ({
     root: {
         position: 'relative',
-        margin: 2 * theme.spacing.unit,
+        // margin: 2 * theme.spacing.unit,
         padding: 2 * theme.spacing.unit,
         backgroundColor: '#FFF',
         borderRadius: 4,
@@ -42,7 +42,13 @@ export default theme => ({
         fontSize: '0.9em',
         fontWeight: 200,
         color: '#000000AA',
+    },
 
+    divider: {
+        width: '100%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        backgroundColor: '#f0598855',
     },
 
     metaInformation: {
@@ -51,21 +57,26 @@ export default theme => ({
 
     writer: {
         color: '#000',
-    
+        marginLeft: theme.spacing.unit / 2,
+        marginRight: theme.spacing.unit / 2,
     },
 
     date: {
-
         color: '#000',
+        marginLeft: theme.spacing.unit / 2,
+        marginRight: theme.spacing.unit / 2,
     },
 
     readTime: {
         color: '#000',
-
+        marginLeft: theme.spacing.unit / 2,
+        marginRight: theme.spacing.unit / 2,
     },
 
     extras: {
         color: '#000',
+        marginLeft: theme.spacing.unit / 2,
+        marginRight: theme.spacing.unit / 2,
     },
 
     bottomHighlight: {

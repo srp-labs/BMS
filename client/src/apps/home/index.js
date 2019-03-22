@@ -3,9 +3,10 @@ import classnames from 'classnames';
 import {
     withStyles, 
     Typography,
+    Grid,
 } from '@material-ui/core';
-import PageContainer from '../../components/page-container';
-import ArticleCard from './article-card';
+
+import { PageContainer, ArticleCard } from '../../components';
 import styles from './styles';
 
 import Logo from "../../../assets/images/logo.png";
@@ -28,9 +29,13 @@ const Home = ({classes, ...props}) => {
                     <big>L</big>atest <big>P</big>osts
                 </Typography>
                 
-                <ArticleCard />
+                {/* <Grid container spacing={16}> */}
 
-                <ArticleCard />
+                    <ArticleCard />
+
+                    <ArticleCard />
+                
+                {/* </Grid> */}
             </div>
 
         </PageContainer>
