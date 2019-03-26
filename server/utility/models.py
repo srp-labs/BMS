@@ -67,3 +67,25 @@ class Region(models.Model):
 	def save(self, *args, **kwargs):
 		#do_something
 		super().save(*args, **kwargs)  # Call the "real" save() method.
+
+
+class ApiLog(models.Model):
+	user = models.ForeignKey(User, on_delete=models.CASCADE,blank=True)
+	ip_address = models.CharField(max_length=150,null=True)
+	api_view = models.CharField(max_length=150)
+	method = models.CharField(max_length=150)
+	date_time = models.DateTimeField(auto_now_add=True)
+
+	# META CLASS
+	class Meta:
+		verbose_name = 'API Log'
+		verbose_name_plural = 'API Logs'
+
+	# TO STRING METHOD
+	def __str__(self):
+		return str(self.user) + "-" + str(self.api_view) + "-" + str(self.method) + "-" + str(self.date_time)
+
+	# SAVE METHOD
+	def save(self, *args, **kwargs):
+		#do_something
+		super().save(*args, **kwargs)  # Call the "real" save() method.

@@ -20,3 +20,7 @@ class GenderAdmin(ImportExportModelAdmin):
 @admin.register(Region)
 class RegionAdmin(ImportExportModelAdmin):
     pass
+
+@admin.register(ApiLog)
+class ApiLogAdmin(ImportExportModelAdmin):
+    pass
