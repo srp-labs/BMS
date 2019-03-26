@@ -11,3 +11,12 @@ from import_export import resources
 @admin.register(Difficulty)
 class DifficultyAdmin(ImportExportModelAdmin):
     pass
+
+
+@admin.register(Gender)
+class GenderAdmin(ImportExportModelAdmin):
+    pass
+
+@admin.register(Region)
+class RegionAdmin(ImportExportModelAdmin):
+    pass
