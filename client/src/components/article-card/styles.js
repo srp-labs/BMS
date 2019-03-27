@@ -40,11 +40,20 @@ export default theme => ({
         display: 'flex',
     },
 
-    articleImage: {
+    articleImageWrapper: {
+        position: 'relative',
         width: '100%',
-        minHeight: 100,
+        height: 200,
         alignSelf: 'center',
-        // marginRight: 2 * theme.spacing.unit,
+        overflow: 'hidden',
+    },
+
+    articleImage: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        width: '100%',
+        transform: 'translate(-50%, -50%)'
     },
 
     articleDescription: {

@@ -3,9 +3,9 @@ import classnames from 'classnames';
 
 import {
     withStyles,
+    withTheme,
     Grid,
     Typography,
-    Avatar,
     Divider,
     ButtonBase,
 } from '@material-ui/core';
@@ -15,27 +15,18 @@ import {
     BookmarkBorder,
     Today,
     Timer,
-    People,
 } from '@material-ui/icons';
 import styles from './styles';
 
 import ChipsContainer from './chips-container';
 
+import TestImage from '../../../assets/images/test1.jpeg';
+
 import FrontendAvatar from '../../../assets/images/react.svg';
 import BackendAvatar from '../../../assets/images/server.svg';
 import SetupAvatar from '../../../assets/images/management.svg';
 
-let difficultyColors = {
-    'Easy': "#8BC34A",
-    'Medium': "#FFC107",
-    'Advanced': "#FF5722",
-};
-
-let FRONTEND_COLOR = "#03A9F4";
-let BACKEND_COLOR = "#004D40";
-let SETUP_COLOR = "#607D8B";
-
-const ArticleCard = ({ data, classes, ...props }) => {
+const ArticleCard = ({ data, theme, classes, ...props }) => {
     const openArticle = () => {
         var win = window.open(data.url, '_blank');
         win.focus();
@@ -44,14 +35,14 @@ const ArticleCard = ({ data, classes, ...props }) => {
     let chips = [
         {
             label: data.difficulty.name,
-            color: difficultyColors[data.difficulty.name],
+            color: theme.palette.difficulty[data.difficulty.name],
         },
     ];
 
     if(data.frontend_score) { 
         chips.push({
             label: "Front-end",
-            color: FRONTEND_COLOR,
+            color: theme.palette.articleType["frontend"],
             avatar: FrontendAvatar,
         })
     }
@@ -59,7 +50,7 @@ const ArticleCard = ({ data, classes, ...props }) => {
     if(data.backend_score) { 
         chips.push({
             label: "Back-end",
-            color: BACKEND_COLOR,
+            color: theme.palette.articleType["backend"],
             avatar: BackendAvatar,
         })
     }
@@ -67,11 +58,10 @@ const ArticleCard = ({ data, classes, ...props }) => {
     if(data.setup_score) { 
         chips.push({
             label: "Setup",
-            color: SETUP_COLOR,
+            color: theme.palette.articleType["setup"],
             avatar: SetupAvatar,
         })
     }
-
 
     return (
         <Grid item xs={12} sm={6} md={4}>
@@ -88,10 +78,14 @@ const ArticleCard = ({ data, classes, ...props }) => {
                 <Divider className={classes.divider} />
 
                 <div className={classes.cardContent}>
-                    <img src={data.thumbnail} className={classes.articleImage} />
-                    {/* <Typography className={classes.articleDescription}>
-                        In this article you will learn the basics of using Bulma components in your React apps using the react-bulma-components library.
-                    </Typography> */}
+                    <div className={classes.articleImageWrapper}>
+                        {
+                            data.thumbnail && false ?
+                            <img src={data.thumbnail} className={classes.articleImage} />:
+                            <img src={TestImage} className={classes.articleImage} />
+                        }
+                    </div>
+                    {/* <Typography className={classes.articleDescription}>Brief Info.</Typography> */}
                 </div>
 
                 <Divider className={classes.divider} />
@@ -116,4 +110,4 @@ const ArticleCard = ({ data, classes, ...props }) => {
     )
 }
 
-export default withStyles(styles)(ArticleCard);
+export default withTheme()(withStyles(styles)(ArticleCard));

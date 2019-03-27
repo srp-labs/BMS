@@ -24,6 +24,16 @@ export const light = createMuiTheme({
         text: {
             primary: '#FFF',
         },
+        difficulty: {
+            'Easy': "#8BC34A",
+            'Medium': "#FFC107",
+            'Advanced': "#FF5722",
+        },
+        articleType: {
+            'frontend': "#03A9F4",
+            'backend': "#004D40",
+            'setup': "#607D8B",
+        },
     },
     typography: {
         fontFamily: fontFamily,
