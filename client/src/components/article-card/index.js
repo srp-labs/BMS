@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+
 import {
     withStyles,
     Grid,
@@ -20,37 +21,44 @@ import styles from './styles';
 
 import Jatin from '../../../assets/images/jatin.jpg';
 
-const ArticleCard = ({ classes, ...props }) => {
+
+
+const ArticleCard = ({ data, classes, ...props }) => {
+    const openArticle = () => {
+        var win = window.open(data.url, '_blank');
+        win.focus();
+    }
+
     return (
-        <Grid item xs={12} md={6}>
-            <ButtonBase className={classes.root}>
+        <Grid item xs={12} sm={6} md={4}>
+            <ButtonBase className={classes.root} onClick={openArticle}>
                 <div className={classes.cardTitle}>
-                    <Typography className={classes.articleTitle}>
-                        Introduction to Bulma with React
+                    <Typography className={classes.articleTitle} title={data.title}>
+                        {data.title}
                     </Typography>
                     {/* <BookmarkBorder /> */}
                 </div>
                 <div className={classes.cardContent}>
-                    <Avatar src={Jatin} className={classes.articleImage} />
-                    <Typography className={classes.articleDescription}>
+                    <img src={data.thumbnail} className={classes.articleImage} />
+                    {/* <Typography className={classes.articleDescription}>
                         In this article you will learn the basics of using Bulma components in your React apps using the react-bulma-components library.
-                    </Typography>
+                    </Typography> */}
                 </div>
 
                 <Divider className={classes.divider} />
 
                 <div className={classes.metaInformation}>
-                    <Typography className={classes.metaText}>
+                    {/* <Typography className={classes.metaText}>
                         <People />
                         Jatin Goel
-                    </Typography>
+                    </Typography> */}
                     <Typography className={classes.metaText}>
                         <Today />
-                        29th Feb, 2019
+                        {data.publish_date}
                     </Typography>
                     <Typography className={classes.metaText}>
                         <Timer />
-                        3 min
+                        {data.read_time} min
                     </Typography>
                 </div>
                 <div className={classes.bottomHighlight} />

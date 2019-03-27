@@ -17,6 +17,7 @@ export default theme => ({
         left: 0,
     },
     main: {
+        display: 'flex',
         flexGrow: 2,
         marginTop: 64,
 

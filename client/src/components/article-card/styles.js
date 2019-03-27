@@ -2,6 +2,7 @@ export default theme => ({
     root: {
         position: 'relative',
         display: 'block',
+        width: '100%',
         verticalAlign: 'initial',
         textAlign: 'initial',
         padding: 2 * theme.spacing.unit,
@@ -29,6 +30,10 @@ export default theme => ({
         fontSize: '1.2em',
         fontWeight: 500,
         flexGrow: 2,
+        width: 0, // Unknown result....
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
     },
 
     cardContent: {
@@ -36,10 +41,10 @@ export default theme => ({
     },
 
     articleImage: {
-        width: 64,
-        height: 64,
+        width: '100%',
+        minHeight: 100,
         alignSelf: 'center',
-        marginRight: 2 * theme.spacing.unit,
+        // marginRight: 2 * theme.spacing.unit,
     },
 
     articleDescription: {
@@ -53,7 +58,7 @@ export default theme => ({
         width: '100%',
         marginLeft: 'auto',
         marginRight: 'auto',
-        backgroundColor: 'rgba(107,183,86,1)',
+        backgroundColor: theme.palette.primary.main,
     },
 
     metaInformation: {
@@ -87,6 +92,6 @@ export default theme => ({
         height: '4px',
         width: '100%',  
         marginBottom: 0,
-        backgroundColor: 'rgba(107,183,86,1)',
+        backgroundColor: theme.palette.primary.main,
     },
 })

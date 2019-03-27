@@ -35,6 +35,7 @@ export default theme => ({
         fontSize: '1.5em',
         fontWeight: 100,
         fontStyle: 'italic',
+        textAlign: 'center',
     },
 
     latestPostsSection: {

@@ -1,7 +1,14 @@
-import { createMuiTheme } from '@material-ui/core';
-import { red } from '@material-ui/core/colors';
+import { createMuiTheme } from '@material-ui/core'
 
 import colors from './colors';
+
+const fontFamily = [
+    "'Raleway'",
+    "'Roboto'", 
+    "'Helvetica'", 
+    "'Arial'", 
+    "'sans-serif'",
+].join(',');
 
 export const light = createMuiTheme({
     palette: {
@@ -19,6 +26,7 @@ export const light = createMuiTheme({
         },
     },
     typography: {
+        fontFamily: fontFamily,
         useNextVariants: true,
     },
     props: {

@@ -1,6 +1,6 @@
 export default {
-    main: '#3C4252',
-    light: '#7D818C',
-    dark: '#1E2129',
+    main: '#6bb756',
+    light: '#a0ff86',
+    dark: '#008f68',
     contrastText: "#FFF",
 }
