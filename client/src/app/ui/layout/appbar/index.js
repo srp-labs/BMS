@@ -1,11 +1,15 @@
 import React from 'react';
 import classnames from 'classnames';
+
+import { Link } from 'react-router-dom';
+
 import {
     withStyles,
     AppBar,
     Toolbar,
     Hidden,
     Typography,
+    IconButton,
 } from '@material-ui/core';
 
 import {
@@ -13,7 +17,7 @@ import {
     People,
 } from '@material-ui/icons';
 
-import Link from './link';
+import AppLink from './link';
 import styles from './styles';
 
 const Appbar = ({ className, classes, ...props }) => {
@@ -22,18 +26,22 @@ const Appbar = ({ className, classes, ...props }) => {
             className={classnames(classes.root, className)}
             {...props}
         >
-            <Toolbar>
+            <Toolbar className={classes.toolbar}>
                 <Hidden xlDown>
                     <Menu color="primary" />    
                 </Hidden>
                 <div className={classes.linksContainer}>
-                    <Link to="/home" label="Home" />
-                    <Link to="/articles" label="Articles" />
-                    <Link to="/about" label="About Us" />
+                    <AppLink to="/home" label="Home" />
+                    <AppLink to="/articles" label="Articles" />
+                    <AppLink to="/about" label="About Us" />
                 </div>
-                <Hidden xlDown>
-                    <People color="primary" />    
-                </Hidden>
+                
+                <Link to="/login">
+                    <IconButton onClick={() => {}}>
+                        <People className={classes.icon} />    
+                    </IconButton>
+                </Link>
+            
             </Toolbar>
         </AppBar>
     )

@@ -10,9 +10,11 @@ const PageContainer = ({ className, classes, loading, title, ...props }) => {
     
     return (
         loading ?
-        <div className={classnames(className, classes.root)} {...props}>
-            <Loader />
-        </div> :
+        <Fade in={true}>
+            <div className={classnames(className, classes.root)} {...props}>
+                <Loader />
+            </div>
+        </Fade> :
         <Fade in={true}>
             <div className={classnames(className, classes.root)} {...props}>
                 {props.children}

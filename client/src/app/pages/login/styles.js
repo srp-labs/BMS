@@ -1,62 +1,74 @@
 export default theme => ({
-    bannerSection: {
+    container: {
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
         justifyContent: 'center',
-        height: '75vh',
-        background: `linear-gradient(to right, rgba(107,183,86,0.95), 
-                            rgba(0,143,104,0.95))`,
-        clipPath: 'polygon(50% 0%, 100% 0, 100% 85%, 50% 100%, 0 85%, 0 0)',
-        transition: 'clip-path 0.25s',
-        willChange: 'clip-path',
-        
-        [theme.breakpoints.down('sm')]: {
-            clipPath: 'polygon(50% 0%, 100% 0, 100% 85%, 50% 100%, 0 85%, 0 0)',
-        },
+        alignItems: 'center',
     },
 
-    bannerImage: {
-        width: 180,
-        margin: 2 * theme.spacing.unit,
-        transition: 'width 0.25s, height 0.25s, margin 0.25s',
-        
-        [theme.breakpoints.down('md')]: {
-            margin: theme.spacing.unit,
-            width: 140,
-        },
-        
-        [theme.breakpoints.down('sm')]: {
-            width: 120,
-        },
-    },
-
-    bannerText: {
-        fontSize: '1.5em',
-        fontWeight: 100,
-        fontStyle: 'italic',
-        textAlign: 'center',
-    },
-
-    latestPostsSection: {
+    formContainer: {
         display: 'flex',
         flexDirection: 'column',
-        marginTop: 4 * theme.spacing.unit,
-        padding: 2 * theme.spacing.unit,
-        
-        [theme.breakpoints.down('sm')]: {
-            padding: theme.spacing.unit,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 360,
+        padding: 24,
+        backgroundColor: '#fff',
+        borderRadius: 4,
+        transition: 'all 0.25s',
+
+        '& > *': {
+            margin: 3*theme.spacing.unit
         },
+        
+        [theme.breakpoints.up('md')]: {
+            width: 480,
+        },
+
+        // [theme.breakpoints.down('sm')]: {
+        //     minHeight: '50vh',
+        //     '& > *': {
+        //         margin: theme.spacing.unit
+        //     }
+        // },
     },
 
-    latestPostsTitle: {
-        fontSize: '1.2em',
-        textAlign: 'center',
+    formTitle: {
         textTransform: 'uppercase',
+        color: theme.palette.primary.dark,
+        fontWeight: 'bold',
+    },
+    
+    formDivider: {
+        width: '50%',
+        height: '2px',
+        backgroundColor: theme.palette.primary.dark,
+        margin: `${2*theme.spacing.unit}px auto`,
+    },
+    
+    formControl: {
+        width: '100%',
+        margin: `${2*theme.spacing.unit}px auto`,
     },
 
-    cardContainer: {
-        width: '100%',
-        margin: `${2 * theme.spacing.unit}px 0`,
+    collegeLogo: {
+        height: 150,
+        width: 150,
+
+        [theme.breakpoints.down('sm')]: {
+            height: 80,
+            width: 80,
+        }
     },
+    
+    formWrapper: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
+    },
+    
+    softwareLogo: {
+        height: 200,
+        widht: 200
+    }
 })
