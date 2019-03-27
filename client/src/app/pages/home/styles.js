@@ -38,7 +38,7 @@ export default theme => ({
         textAlign: 'center',
     },
 
-    latestPostsSection: {
+    latestArticlesSection: {
         display: 'flex',
         flexDirection: 'column',
         marginTop: 4 * theme.spacing.unit,
@@ -49,7 +49,7 @@ export default theme => ({
         },
     },
 
-    latestPostsTitle: {
+    latestArticlesTitle: {
         fontSize: '1.2em',
         textAlign: 'center',
         textTransform: 'uppercase',

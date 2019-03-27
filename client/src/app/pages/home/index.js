@@ -59,9 +59,9 @@ class Home extends React.Component {
                     </Typography>
                 </div>
     
-                <div className={classes.latestPostsSection}>
-                    <Typography className={classes.latestPostsTitle}>
-                        <big>L</big>atest <big>P</big>osts
+                <div className={classes.latestArticlesSection}>
+                    <Typography className={classes.latestArticlesTitle}>
+                        <big>L</big>atest <big>A</big>rticles
                     </Typography>
                     
                     <Grid container spacing={16} className={classes.cardContainer}>
