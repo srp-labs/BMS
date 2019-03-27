@@ -5,8 +5,8 @@ import {
     Typography,
 } from '@material-ui/core';
 
-import API from '../../../services/api';
-import { PageContainer, ArticleCard } from '../../../components';
+import API from '../../../../services/api';
+import { PageContainer, ArticleCard } from '../../../../components';
 import styles from './styles';
 
 class List extends React.Component {

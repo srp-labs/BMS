@@ -6,11 +6,11 @@ import {
     Grid,
 } from '@material-ui/core';
 
-import API from '../../services/api';
-import { PageContainer, ArticleCard } from '../../components';
+import API from '../../../services/api';
+import { PageContainer, ArticleCard } from '../../../components';
 import styles from './styles';
 
-import Logo from "../../../assets/images/logo.png";
+import Logo from "../../../../assets/images/logo.png";
 
 class Home extends React.Component {
     state = {

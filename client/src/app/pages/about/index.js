@@ -5,16 +5,16 @@ import {
     Grid,
 } from '@material-ui/core';
 
-import PageContainer from '../../components/page-container';
+import PageContainer from '../../../components/page-container';
 import styles from './styles';
 
-import Jatin from '../../../assets/images/jatin.jpg';
-import Maharshi from '../../../assets/images/maharshi.jpg';
-import Yogesh from '../../../assets/images/yogesh.jpg';
+import Jatin from '../../../../assets/images/jatin.jpg';
+import Maharshi from '../../../../assets/images/maharshi.jpg';
+import Yogesh from '../../../../assets/images/yogesh.jpg';
 
-import Github from '../../../assets/images/github-logo.svg';
-import Facebook from '../../../assets/images/linkedin-logo.svg';
-import Linkedin from '../../../assets/images/facebook-logo.svg';
+import Github from '../../../../assets/images/github-logo.svg';
+import Facebook from '../../../../assets/images/linkedin-logo.svg';
+import Linkedin from '../../../../assets/images/facebook-logo.svg';
 
 const developers = [
     {
