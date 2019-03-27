@@ -14,7 +14,7 @@ import {
 
 import {
     Menu,
-    People,
+    Person,
 } from '@material-ui/icons';
 
 import AppLink from './link';
@@ -38,7 +38,7 @@ const Appbar = ({ className, classes, ...props }) => {
                 
                 <Link to="/login">
                     <IconButton onClick={() => {}}>
-                        <People className={classes.icon} />    
+                        <Person className={classes.icon} />    
                     </IconButton>
                 </Link>
             
