@@ -17,16 +17,20 @@ import styles from './styles';
 
 import Logo from "../../../../assets/images/logo.svg";
 
-class Login extends React.Component {
+class Register extends React.Component {
     state = {
         loading: false,
         credentials: {
             username: "",
+            email: "",
             password: "",
+            confirmPassword: "",
+            gender: "",
+            region: "",
         },
     };
 
-    login = (event) => {
+    register = (event) => {
         event.preventDefault();
         
         let data = {
@@ -43,7 +47,7 @@ class Login extends React.Component {
        
         // perform API query to initiate login.
         /*
-        API.post('login/', data)
+        API.post('register/', data)
             .then(response => {
                 // Save to localstorage.
                 localStorage.setItem("username", data.username);
@@ -74,9 +78,8 @@ class Login extends React.Component {
         return (
             <PageContainer className={classes.container} loading={loading}>
                 <Paper className={classes.formContainer}>
-                    <img alt="IIIT-A" src={Logo} className={classes.collegeLogo} />
                     <div className={classes.formWrapper}>
-                        <Typography variant="h6" className={classes.formTitle}>Login</Typography>
+                        <Typography variant="h6" className={classes.formTitle}>Register</Typography>
                         <Divider variant="middle" className={classes.formDivider} />
                         <form>
                             <TextField 
@@ -87,11 +90,19 @@ class Login extends React.Component {
                                 }} 
                                 variant="outlined" 
                                 label="Username" 
-                                value={credentials.username}
-                                autoCorrect="off" 
-                                autoCapitalize="off" 
-                                spellCheck="false"
+                                value={credentials.username} 
                                 autoFocus />
+
+                            <TextField 
+                                onChange={this.handleForm('email')} 
+                                className={classes.formControl}
+                                inputProps={{
+                                    className:classes.textFieldInput,
+                                }} 
+                                variant="outlined" 
+                                label="E-mail" 
+                                value={credentials.email} />
+
                             <TextField 
                                 onChange={this.handleForm('password')} 
                                 className={classes.formControl}
@@ -101,22 +112,53 @@ class Login extends React.Component {
                                 variant="outlined" 
                                 type="password" 
                                 label="Password" 
-                                value={credentials.password} 
-                                autoCorrect="off" 
-                                autoCapitalize="off" 
-                                spellCheck="false" />
+                                value={credentials.password} />
+
+                            <TextField 
+                                onChange={this.handleForm('confirmPassword')} 
+                                className={classes.formControl}
+                                inputProps={{
+                                    className:classes.textFieldInput,
+                                }} 
+                                variant="outlined" 
+                                type="password" 
+                                label="Confirm Password" 
+                                value={credentials.confirmPassword} />
+
+                            <TextField 
+                                onChange={this.handleForm('gender')} 
+                                className={classes.formControl}
+                                inputProps={{
+                                    className:classes.textFieldInput,
+                                }} 
+                                variant="outlined" 
+                                type="password" 
+                                label="Gender" 
+                                value={credentials.gender} />    
+
+                            <TextField 
+                                onChange={this.handleForm('region')} 
+                                className={classes.formControl}
+                                inputProps={{
+                                    className:classes.textFieldInput,
+                                }} 
+                                variant="outlined" 
+                                type="password" 
+                                label="Region" 
+                                value={credentials.region} />
+                            
                             <Button 
                                 type="submit" 
                                 className={classes.formControl} 
                                 variant="contained" 
                                 color="primary" 
-                                onClick={this.login} >
-                                Login
+                                onClick={this.register} >
+                                Register
                             </Button>
                         </form>
                             
-                        <Link to="/register">
-                            <Typography color="primary">Create New Account</Typography>
+                        <Link to="/login">
+                            <Typography color="primary">Have an account already?</Typography>
                         </Link>
                                 
 
@@ -127,4 +169,4 @@ class Login extends React.Component {
     }
 }
 
-export default withRouter(withStyles(styles)(Login));
+export default withRouter(withStyles(styles)(Register));

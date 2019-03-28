@@ -6,6 +6,7 @@ import {
     Typography,
     Grid,
     Button,
+    Hidden,
 } from '@material-ui/core';
 
 import API from '../../../services/api';
@@ -13,6 +14,8 @@ import { PageContainer, ArticleCard } from '../../../components';
 import styles from './styles';
 
 import HomeBanner from "../../../../assets/images/homebanner.png";
+import ReactBanner from "../../../../assets/images/react.png";
+import DjangoBanner from "../../../../assets/images/django.png";
 
 class Home extends React.Component {
     state = {
@@ -52,7 +55,15 @@ class Home extends React.Component {
         return (
             <PageContainer loading={loading}>
                 <div className={classes.bannerSection}>
-                    <img className={classes.bannerImage} src={HomeBanner} />
+                    <div className={classes.bannerImagesContainer}>
+                        <Hidden smDown>
+                            <img className={classes.bannerSideImage} src={DjangoBanner} />
+                        </Hidden>
+                        <img className={classes.bannerImage} src={HomeBanner} />
+                        <Hidden smDown>
+                            <img className={classes.bannerSideImage} src={ReactBanner} style={{ transform: 'scale(0.6)' }}/>
+                        </Hidden>
+                    </div>
                     <Typography className={classes.bannerText}>
                         We are here to share our experiences and knowledge building web apps.
                     </Typography>

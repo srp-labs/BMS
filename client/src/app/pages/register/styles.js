@@ -4,7 +4,7 @@ export default theme => ({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: 4 * theme.spacing.unit,
+        paddingTop: 4 * theme.spacing.unit, 
     },
     
     formContainer: {

@@ -15,7 +15,28 @@ export default theme => ({
         },
     },
 
+    bannerImagesContainer: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+    },
+
     bannerImage: {
+        width: 400,
+        margin: 2 * theme.spacing.unit,
+        transition: 'width 0.25s, height 0.25s, margin 0.25s',
+        
+        [theme.breakpoints.down('md')]: {
+            margin: theme.spacing.unit,
+            width: 320,
+        },
+        
+        [theme.breakpoints.down('sm')]: {
+            width: 280,
+        },
+    },
+
+    bannerSideImage: {
         width: 400,
         margin: 2 * theme.spacing.unit,
         transition: 'width 0.25s, height 0.25s, margin 0.25s',
