@@ -1,16 +1,18 @@
 import React from 'react';
 import classnames from 'classnames';
+import { Link } from 'react-router-dom';
 import {
     withStyles, 
     Typography,
     Grid,
+    Button,
 } from '@material-ui/core';
 
 import API from '../../../services/api';
 import { PageContainer, ArticleCard } from '../../../components';
 import styles from './styles';
 
-import Logo from "../../../../assets/images/logo.png";
+import HomeBanner from "../../../../assets/images/homebanner.png";
 
 class Home extends React.Component {
     state = {
@@ -48,9 +50,9 @@ class Home extends React.Component {
         const { loading, articles } = this.state;
 
         return (
-            <PageContainer>
+            <PageContainer loading={loading}>
                 <div className={classes.bannerSection}>
-                    <img className={classes.bannerImage} src={Logo} />
+                    <img className={classes.bannerImage} src={HomeBanner} />
                     <Typography className={classes.bannerText}>
                         We are here to share our experiences and knowledge building web apps.
                     </Typography>
@@ -65,12 +67,20 @@ class Home extends React.Component {
                     </Typography>
                     
                     <Grid container spacing={16} className={classes.cardContainer}>
-                    {
-                        articles.map((article, index) => <ArticleCard 
-                            key={index}
-                            data={article} />)
-                    }
+                        {
+                            articles.map((article, index) => <ArticleCard 
+                                key={index}
+                                data={article} />)
+                        }
                     </Grid>
+
+                    <Button variant="outlined" color="secondary" className={classes.viewAllLink}>
+                        <Link to="/articles">
+                            <Typography color="secondary">
+                                View All Articles
+                            </Typography>
+                        </Link>
+                    </Button>
                 </div>
     
             </PageContainer>

@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import { withRouter } from 'react-router';
 import {
     withStyles, 
     Typography,
@@ -14,7 +15,7 @@ import API from '../../../services/api';
 import { PageContainer } from '../../../components';
 import styles from './styles';
 
-import Logo from "../../../../assets/images/logo.png";
+import Logo from "../../../../assets/images/logo.svg";
 
 class Login extends React.Component {
     state = {
@@ -27,9 +28,35 @@ class Login extends React.Component {
 
     login = (event) => {
         event.preventDefault();
+        
+        let data = {
+            ...this.state.credentials,
+        };
+
+        // Set loading to true.
+        /* 
         this.setState({
             loading: true,
-        });
+        }); 
+        */
+
+       
+        // perform API query to initiate login.
+        /*
+        API.post('login/', data)
+            .then(response => {
+                // Save to localstorage.
+                localStorage.setItem("username", data.username);
+                localStorage.setItem("authToken", response.token); ???
+                
+                this.props.history.push("/redirect/home");
+            })
+            .catch(error => {
+                this.setState({
+                    loading: false,
+                })
+            }) 
+        */ 
     }
 
     handleForm = name => event => this.setState({
@@ -53,14 +80,21 @@ class Login extends React.Component {
                         <Divider variant="middle" className={classes.formDivider} />
                         <form>
                             <TextField 
-                                className={classes.formControl} 
+                                onChange={this.handleForm('username')} 
+                                className={classes.formControl}
+                                inputProps={{
+                                    className:classes.textFieldInput,
+                                }} 
                                 variant="outlined" 
                                 label="Username" 
                                 value={credentials.username} 
-                                onChange={this.handleForm('username')} 
                                 autoFocus />
                             <TextField 
-                                className={classes.formControl} 
+                                onChange={this.handleForm('username')} 
+                                className={classes.formControl}
+                                inputProps={{
+                                    className:classes.textFieldInput,
+                                }} 
                                 variant="outlined" 
                                 type="password" 
                                 label="Password" 
@@ -82,4 +116,4 @@ class Login extends React.Component {
     }
 }
 
-export default withStyles(styles)(Login);
+export default withRouter(withStyles(styles)(Login));

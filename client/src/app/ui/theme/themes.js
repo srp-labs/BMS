@@ -27,18 +27,23 @@ export const light = createMuiTheme({
         text: {
             primary: '#FFF',
         },
+
         // App only properties.
-        difficulty: {
-            'Easy': "#8BC34A",
-            'Medium': "#FFC107",
-            'Advanced': "#FF5722",
-        },
-        // App only properties.
-        articleType: {
-            'frontend': "#03A9F4",
-            'backend': "#004D40",
-            'setup': "#607D8B",
-        },
+        articleColors: {
+            // App only properties.
+            difficulty: {
+                'Easy': "#8BC34A",
+                'Medium': "#FFC107",
+                'Advanced': "#FF5722",
+            },
+            // App only properties.
+            type: {
+                'frontend': "#03A9F4",
+                'backend': "#004D40",
+                'setup': "#607D8B",
+                noteworthy: "#000000",
+            },
+        }
     },
     typography: {
         fontFamily: fontFamily,

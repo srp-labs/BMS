@@ -16,17 +16,17 @@ export default theme => ({
     },
 
     bannerImage: {
-        width: 180,
+        width: 400,
         margin: 2 * theme.spacing.unit,
         transition: 'width 0.25s, height 0.25s, margin 0.25s',
         
         [theme.breakpoints.down('md')]: {
             margin: theme.spacing.unit,
-            width: 140,
+            width: 320,
         },
         
         [theme.breakpoints.down('sm')]: {
-            width: 120,
+            width: 280,
         },
     },
 
@@ -35,6 +35,14 @@ export default theme => ({
         fontWeight: 100,
         fontStyle: 'italic',
         textAlign: 'center',
+        
+        [theme.breakpoints.down('md')]: {
+            fontSize: '1.4em',
+        },
+        
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '1.3em',
+        },
     },
 
     latestArticlesSection: {
@@ -59,5 +67,21 @@ export default theme => ({
     cardContainer: {
         width: '100%',
         margin: `${2 * theme.spacing.unit}px 0`,
+    },
+
+    viewAllLink: {
+        display: 'block',
+        width: 200,
+        fontWeight: 'bold',
+        margin: '0 auto',
+
+        '& a': {
+            textDecoration: 'none',
+
+            '&:active': {
+                color: 'inherit',
+                textDecoration: 'none',
+            }
+        },
     },
 })

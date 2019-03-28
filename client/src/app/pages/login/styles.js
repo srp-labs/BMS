@@ -49,10 +49,11 @@ export default theme => ({
     formControl: {
         width: '100%',
         margin: `${2*theme.spacing.unit}px auto`,
+    },
 
-        '&:hover': {
-            backgroundColor: theme.palette.primary.main,
-        },
+    textFieldInput: {
+        backgroundColor: '#ffffff',
+        color: theme.palette.primary.main,
     },
 
     collegeLogo: {

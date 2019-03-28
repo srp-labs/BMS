@@ -25,6 +25,7 @@ import TestImage from '../../../assets/images/test1.jpeg';
 import FrontendAvatar from '../../../assets/images/react.svg';
 import BackendAvatar from '../../../assets/images/server.svg';
 import SetupAvatar from '../../../assets/images/management.svg';
+import NoteworthyAvatar from '../../../assets/images/noteworthy.png';
 
 const ArticleCard = ({ data, theme, classes, ...props }) => {
     const openArticle = () => {
@@ -35,14 +36,14 @@ const ArticleCard = ({ data, theme, classes, ...props }) => {
     let chips = [
         {
             label: data.difficulty.name,
-            color: theme.palette.difficulty[data.difficulty.name],
+            color: theme.palette.articleColors.difficulty[data.difficulty.name],
         },
     ];
 
     if(data.frontend_score) { 
         chips.push({
             label: "Front-end",
-            color: theme.palette.articleType["frontend"],
+            color: theme.palette.articleColors.type["frontend"],
             avatar: FrontendAvatar,
         })
     }
@@ -50,7 +51,7 @@ const ArticleCard = ({ data, theme, classes, ...props }) => {
     if(data.backend_score) { 
         chips.push({
             label: "Back-end",
-            color: theme.palette.articleType["backend"],
+            color: theme.palette.articleColors.type["backend"],
             avatar: BackendAvatar,
         })
     }
@@ -58,8 +59,16 @@ const ArticleCard = ({ data, theme, classes, ...props }) => {
     if(data.setup_score) { 
         chips.push({
             label: "Setup",
-            color: theme.palette.articleType["setup"],
+            color: theme.palette.articleColors.type["setup"],
             avatar: SetupAvatar,
+        })
+    }
+
+    if(data.noteworthy) {
+        chips.push({
+            label: "Noteworthy",
+            color: theme.palette.articleColors.type["noteworthy"],
+            avatar: NoteworthyAvatar,
         })
     }
 
