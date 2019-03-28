@@ -13,22 +13,27 @@ const fontFamily = [
 export const light = createMuiTheme({
     palette: {
         primary: {
-            ...colors
+            ...colors.primary,
         },
         secondary: {
-            main: '#039BE5',
+            ...colors.secondary,
         },
         background: {
+            body: '#222831',
             appBar: '#f5f5f5',
+            // App only properties.
+            appBarGradient: 'linear-gradient(to right, #302e24, #28313e)',
         },
         text: {
             primary: '#FFF',
         },
+        // App only properties.
         difficulty: {
             'Easy': "#8BC34A",
             'Medium': "#FFC107",
             'Advanced': "#FF5722",
         },
+        // App only properties.
         articleType: {
             'frontend': "#03A9F4",
             'backend': "#004D40",

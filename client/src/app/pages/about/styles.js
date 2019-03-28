@@ -7,6 +7,8 @@ export default theme => ({
         fontSize: '1.2em',
         textAlign: 'center',
         textTransform: 'uppercase',
+        fontWeight: 'bold',
+        color: theme.palette.secondary.main,
     },
 
     aboutSection: {

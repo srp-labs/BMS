@@ -6,7 +6,7 @@ export default theme => ({
         verticalAlign: 'initial',
         textAlign: 'initial',
         padding: 2 * theme.spacing.unit,
-        backgroundColor: '#0A1F18',
+        backgroundColor: theme.palette.primary.dark,
         borderRadius: 4,
         boxShadow: theme.shadows[1],
         overflow: 'hidden',
@@ -43,7 +43,7 @@ export default theme => ({
     articleImageWrapper: {
         position: 'relative',
         width: '100%',
-        height: 200,
+        height: 160,
         alignSelf: 'center',
         overflow: 'hidden',
     },
@@ -67,7 +67,7 @@ export default theme => ({
         width: '100%',
         marginLeft: 'auto',
         marginRight: 'auto',
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: theme.palette.secondary.main,
     },
 
     metaInformation: {
@@ -101,6 +101,6 @@ export default theme => ({
         height: '4px',
         width: '100%',  
         marginBottom: 0,
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: theme.palette.secondary.main,
     },
 })

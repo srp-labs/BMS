@@ -60,7 +60,7 @@ class Home extends React.Component {
                 </div>
     
                 <div className={classes.latestArticlesSection}>
-                    <Typography className={classes.latestArticlesTitle}>
+                    <Typography className={classes.sectionTitle} color="secondary">
                         <big>L</big>atest <big>A</big>rticles
                     </Typography>
                     

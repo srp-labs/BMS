@@ -67,7 +67,7 @@ const ArticleCard = ({ data, theme, classes, ...props }) => {
         <Grid item xs={12} sm={6} md={4}>
             <ButtonBase className={classes.root} onClick={openArticle}>
                 <div className={classes.cardTitle}>
-                    <Typography className={classes.articleTitle} title={data.title}>
+                    <Typography className={classes.articleTitle} color="secondary" title={data.title}>
                         {data.title}
                     </Typography>
                     {/* <BookmarkBorder /> */}

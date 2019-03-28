@@ -2,7 +2,7 @@ export default theme => ({
     root: {
         position: 'relative',
         minHeight: '100vh',
-        backgroundColor: '#21523e',
+        backgroundColor: theme.palette.background.body,
     },
     content: {
         position: 'relative',
