@@ -1,18 +1,20 @@
 import React from 'react';
 import classnames from 'classnames';
-
+import { withRouter } from 'react-router-dom';
 import {
     withStyles,
     withTheme,
     Grid,
     Typography,
     Divider,
-    ButtonBase,
+    Button,
+    Card,
+    CardHeader,
+    CardActions,
+    CardActionArea,
 } from '@material-ui/core';
 
 import {
-    Bookmark,
-    BookmarkBorder,
     Today,
     Timer,
 } from '@material-ui/icons';
@@ -27,12 +29,7 @@ import BackendAvatar from '../../../assets/images/server.svg';
 import SetupAvatar from '../../../assets/images/management.svg';
 import NoteworthyAvatar from '../../../assets/images/noteworthy.png';
 
-const ArticleCard = ({ data, theme, classes, ...props }) => {
-    const openArticle = () => {
-        var win = window.open(data.url, '_blank');
-        win.focus();
-    }
-
+const getChips = (data, theme) => {
     let chips = [
         {
             label: data.difficulty.name,
@@ -40,23 +37,23 @@ const ArticleCard = ({ data, theme, classes, ...props }) => {
         },
     ];
 
-    if(data.frontend_score) { 
+    if (data.frontend_score) {
         chips.push({
             label: "Front-end",
             color: theme.palette.articleColors.type["frontend"],
             avatar: FrontendAvatar,
         })
     }
-    
-    if(data.backend_score) { 
+
+    if (data.backend_score) {
         chips.push({
             label: "Back-end",
             color: theme.palette.articleColors.type["backend"],
             avatar: BackendAvatar,
         })
     }
-    
-    if(data.setup_score) { 
+
+    if (data.setup_score) {
         chips.push({
             label: "Setup",
             color: theme.palette.articleColors.type["setup"],
@@ -64,7 +61,7 @@ const ArticleCard = ({ data, theme, classes, ...props }) => {
         })
     }
 
-    if(data.noteworthy) {
+    if (data.noteworthy) {
         chips.push({
             label: "Noteworthy",
             color: theme.palette.articleColors.type["noteworthy"],
@@ -72,51 +69,84 @@ const ArticleCard = ({ data, theme, classes, ...props }) => {
         })
     }
 
+    return chips;
+}
+
+const ArticleCard = ({ data, history, theme, classes, ...props }) => {
+    const isLoggedIn = Boolean(localStorage.getItem('username'));
+    const chips = getChips(data, theme);    
+    
+    const openArticle = () => {
+        var win = window.open(data.url, '_blank');
+        win.focus();
+    }
+    
+    const markAsRead = (event) => {
+        if(isLoggedIn) {
+            // open rating sweet alert.
+            console.log("Rating sweet alert.");
+        }
+        else {
+            // fire sweet alert with login redirect link.
+            console.log("Login link sweet alert.");
+        }
+    }
     return (
-        <Grid item xs={12} sm={6} md={4}>
-            <ButtonBase className={classes.root} onClick={openArticle}>
-                <div className={classes.cardTitle}>
-                    <Typography className={classes.articleTitle} color="secondary" title={data.title}>
-                        {data.title}
-                    </Typography>
-                    {/* <BookmarkBorder /> */}
-                </div>
-
-                <ChipsContainer chips={chips} />
-
-                <Divider className={classes.divider} />
-
-                <div className={classes.cardContent}>
-                    <div className={classes.articleImageWrapper}>
-                        {
-                            data.thumbnail && false ?
-                            <img src={data.thumbnail} className={classes.articleImage} />:
-                            <img src={TestImage} className={classes.articleImage} />
+        <Grid item xs={12} md={6} lg={4}>
+            <Card className={classes.root}>
+                <CardActionArea className={classes.childMargins} onClick={openArticle}>
+                    <CardHeader 
+                        classes={{
+                            root: classes.cardHeaderRoot,
+                            content: classes.cardHeaderContent,
+                            subheader: classes.cardHeaderSubHeader,
+                        }}
+                        title={
+                            <Typography className={classes.articleTitle} color="secondary" title={data.title}>
+                                {data.title}
+                            </Typography>
                         }
+                        subheader={new Date(data.publish_date).toDateString()} />
+
+                    <ChipsContainer chips={chips} />
+
+                    <Divider className={classes.divider} />
+
+                    <div className={classes.cardContent}>
+                        <div className={classes.articleImageWrapper}>
+                            {
+                                data.thumbnail && false ?
+                                <img src={data.thumbnail} className={classes.articleImage} />:
+                                <img src={TestImage} className={classes.articleImage} />
+                            }
+                        </div>
                     </div>
-                    {/* <Typography className={classes.articleDescription}>Brief Info.</Typography> */}
-                </div>
+                </CardActionArea>
 
                 <Divider className={classes.divider} />
-
-                <div className={classes.metaInformation}>
+                
+                <CardActions className={classes.metaInformation}>
                     {/* <Typography className={classes.metaText}>
                         <People />
                         Jatin Goel
                     </Typography> */}
-                    <Typography className={classes.metaText}>
+                    {/* <Typography className={classes.metaText}>
                         <Today />
                         {data.publish_date}
-                    </Typography>
+                    </Typography> */}
                     <Typography className={classes.metaText}>
                         <Timer />
                         {data.read_time} min
                     </Typography>
-                </div>
+                    <Button variant="outlined" color="secondary" onClick={markAsRead}>
+                        Mark as Read
+                    </Button>
+                </CardActions>
+
                 <div className={classes.bottomHighlight} />
-            </ButtonBase>
+            </Card>
         </Grid>
     )
 }
 
-export default withTheme()(withStyles(styles)(ArticleCard));
+export default withRouter(withTheme()(withStyles(styles)(ArticleCard)));

@@ -1,6 +1,7 @@
 export default theme => ({
     container: {
         padding: theme.spacing.unit,
+        height: 88,
     },
     chip: {
         margin: theme.spacing.unit/2,

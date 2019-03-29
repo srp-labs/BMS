@@ -15,22 +15,42 @@ export default theme => ({
         '&:hover': {
             boxShadow: theme.shadows[10],
         },
+    },
 
+    childMargins: {
         '& > *': {
             marginBottom: theme.spacing.unit,
         },
     },
 
-    cardTitle: {
-        display: 'flex',
-        color: '#FFF',
+    cardHeaderRoot: {
+        padding: theme.spacing.unit,
+        paddingBottom: 0,
     },
-    
+
+    cardHeaderContent: {
+        width: '100%',
+    },
+
+    cardHeaderTitle: {
+        fontSize: '1.2em',
+        fontWeight: 500,
+        flexGrow: 2,
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+    },
+
+    cardHeaderSubHeader: {
+        color: theme.palette.secondary.main,
+        paddingTop: theme.spacing.unit/2,
+        fontSize: '1em',
+    },
+
     articleTitle: {
         fontSize: '1.2em',
         fontWeight: 500,
         flexGrow: 2,
-        width: 0, // Unknown result....
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
@@ -72,12 +92,12 @@ export default theme => ({
 
     metaInformation: {
         display: 'flex',
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
         alignItems: 'center',
         color: '#cacaca',
 
         [theme.breakpoints.down('md')]: {
-            justifyContent: 'space-around',
+            justifyContent: 'space-between',
         }
 
     },
