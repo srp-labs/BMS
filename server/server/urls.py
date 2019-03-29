@@ -25,5 +25,6 @@ schema_view = get_swagger_view(title='BMS API DOCS')
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^api/docs/$', schema_view),
+    url(r'^', include('utility.urls')),
     url(r'^', include('blogs.urls')),
 ]
