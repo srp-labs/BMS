@@ -8421,6 +8421,11 @@ swap-case@^1.1.0:
     lower-case "^1.1.1"
     upper-case "^1.1.1"
 
+sweetalert2-react-content@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/sweetalert2-react-content/-/sweetalert2-react-content-1.1.0.tgz#38c9790631cab37e03055a617afda6d2f447e1d2"
+  integrity sha512-vgmDAGwE4nvFWMkfVO/varrZXLhn2/apOL3O+fi3S2a6NkHWBXP1FGU7HkcmrLvNS1oGC3JcaBP2+r98LRyLIw==
+
 sweetalert2-react@^0.8.1:
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/sweetalert2-react/-/sweetalert2-react-0.8.1.tgz#2f850f8e8ed7ee3f76c10c92eb2522a67b6bf6c0"
@@ -8432,7 +8437,7 @@ sweetalert2-react@^0.8.1:
     sweetalert2 "^8.5.0"
     warning "^4.0.3"
 
-sweetalert2@^8.5.0:
+sweetalert2@^8.5.0, sweetalert2@^8.7.0:
   version "8.7.0"
   resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-8.7.0.tgz#2aa1dcc22693e0c330ffeef87d8d3211e72eb8ab"
   integrity sha512-rC9gu1W2t9zrECnSHx4AF7xWX72YuKvIPerRFdw9SmFIbqc34tlSvnTWHs3VLj0FakLnbsXcgqyGQQASyXyzkA==

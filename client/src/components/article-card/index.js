@@ -19,7 +19,8 @@ import {
 } from '@material-ui/icons';
 import styles from './styles';
 
-import SweetAlert from 'sweetalert2-react';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 import ChipsContainer from './chips-container';
 
@@ -96,6 +97,16 @@ class ArticleCard extends React.Component {
             console.log("Login link sweet alert.");
         }
 
+        const MySwal = withReactContent(Swal);
+
+        MySwal.fire({
+            title: <p>Hello World</p>,
+            footer: 'Copyright 2018',
+            // onOpen: () => {
+            //     MySwal.clickConfirm()
+            // }
+        });
+
         this.setState({
             showSweetAlert: true,
         });
@@ -152,13 +163,6 @@ class ArticleCard extends React.Component {
 
                     <div className={classes.bottomHighlight} />
                 </Card>
-
-                <SweetAlert
-                    show={this.state.showSweetAlert}
-                    title="Demo"
-                    text="SweetAlert in React"
-                    onConfirm={() => this.setState({ showSweetAlert: false })}
-                />
             </Grid>
         )
     }

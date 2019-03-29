@@ -10,6 +10,7 @@ import {
     TextField,
     Button,
 } from '@material-ui/core';
+import axios from 'axios';
 
 import API from '../../../services/api';
 import { PageContainer } from '../../../components';
@@ -25,8 +26,8 @@ class Register extends React.Component {
             email: "",
             password: "",
             confirmPassword: "",
-            gender: "",
-            region: "",
+            gender: { text: '', list: [] },
+            region: { text: '', list: [] },
         },
     };
 
@@ -46,21 +47,20 @@ class Register extends React.Component {
 
        
         // perform API query to initiate login.
-        /*
-        API.post('register/', data)
-            .then(response => {
-                // Save to localstorage.
-                localStorage.setItem("username", data.username);
-                localStorage.setItem("authToken", response.token); ???
+        
+        // API.post('register/', data)
+        //     .then(response => {
+        //         // Save to localstorage.
+        //         localStorage.setItem("username", data.username);
+        //         localStorage.setItem("authToken", response.token); ???
                 
-                this.props.history.push("/redirect/home");
-            })
-            .catch(error => {
-                this.setState({
-                    loading: false,
-                })
-            }) 
-        */ 
+        //         this.props.history.push("/redirect/home");
+        //     })
+        //     .catch(error => {
+        //         this.setState({
+        //             loading: false,
+        //         })
+        //     });
     }
 
     handleForm = name => event => this.setState({
@@ -69,6 +69,14 @@ class Register extends React.Component {
             [name]: event.target.value
         }
     });
+
+    componentDidMount() {
+        axios.all([
+            API.get('genders/'),
+            API.get('regions')
+        ]).then(axios.spread((genders, regions) => {
+        })).catch(error => console.log(error));
+    }
 
     render() {
         const { classes } = this.props;
