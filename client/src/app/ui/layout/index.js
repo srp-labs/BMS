@@ -2,6 +2,7 @@ import React from 'react';
 import {
     withStyles, 
     withTheme,
+    CssBaseline,
     Hidden,
 } from '@material-ui/core';
 
@@ -11,26 +12,18 @@ import Main from './main';
 import Footer from './footer';
 import styles from './styles';
 
-class Layout extends React.Component {
-    state = {
-        navbar: false,
-    };
-
-    toggleNavbar = (nextState = !this.state.navbar) => {
-        this.setState({
-            navbar: nextState,
-        });
-    }
-    
+class Layout extends React.Component {    
     render() {
         const { 
             classes,
-            theme,
             children,
         } = this.props;
 
         return (
             <div className={classes.root}>
+                
+                <CssBaseline />
+                
                 <Hidden xlDown>
                     <Navbar className={classes.navbar} />
                 </Hidden>
