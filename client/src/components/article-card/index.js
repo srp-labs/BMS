@@ -1,62 +1,167 @@
 import React from 'react';
 import classnames from 'classnames';
+import { withRouter } from 'react-router-dom';
 import {
     withStyles,
+    withTheme,
     Grid,
     Typography,
-    Avatar,
     Divider,
-    ButtonBase,
+    Button,
+    Card,
+    CardHeader,
+    CardActions,
+    CardActionArea,
 } from '@material-ui/core';
 
 import {
-    Bookmark,
-    BookmarkBorder,
-    Today,
     Timer,
-    People,
 } from '@material-ui/icons';
 import styles from './styles';
 
-import Jatin from '../../../assets/images/jatin.jpg';
+import SweetAlert from 'sweetalert2-react';
 
-const ArticleCard = ({ classes, ...props }) => {
-    return (
-        <Grid item xs={12} md={6}>
-            <ButtonBase className={classes.root}>
-                <div className={classes.cardTitle}>
-                    <Typography className={classes.articleTitle}>
-                        Introduction to Bulma with React
-                    </Typography>
-                    {/* <BookmarkBorder /> */}
-                </div>
-                <div className={classes.cardContent}>
-                    <Avatar src={Jatin} className={classes.articleImage} />
-                    <Typography className={classes.articleDescription}>
-                        In this article you will learn the basics of using Bulma components in your React apps using the react-bulma-components library.
-                    </Typography>
-                </div>
+import ChipsContainer from './chips-container';
 
-                <Divider className={classes.divider} />
+import TestImage from '../../../assets/images/test1.jpeg';
 
-                <div className={classes.metaInformation}>
-                    <Typography className={classes.metaText}>
-                        <People />
-                        Jatin Goel
-                    </Typography>
-                    <Typography className={classes.metaText}>
-                        <Today />
-                        29th Feb, 2019
-                    </Typography>
-                    <Typography className={classes.metaText}>
-                        <Timer />
-                        3 min
-                    </Typography>
-                </div>
-                <div className={classes.bottomHighlight} />
-            </ButtonBase>
-        </Grid>
-    )
+import FrontendAvatar from '../../../assets/images/react.svg';
+import BackendAvatar from '../../../assets/images/server.svg';
+import SetupAvatar from '../../../assets/images/management.svg';
+import NoteworthyAvatar from '../../../assets/images/noteworthy.png';
+
+const getChips = (data, theme) => {
+    let chips = [
+        {
+            label: data.difficulty.name,
+            color: theme.palette.articleColors.difficulty[data.difficulty.name],
+        },
+    ];
+
+    if (data.frontend_score) {
+        chips.push({
+            label: "Front-end",
+            color: theme.palette.articleColors.type["frontend"],
+            avatar: FrontendAvatar,
+        })
+    }
+
+    if (data.backend_score) {
+        chips.push({
+            label: "Back-end",
+            color: theme.palette.articleColors.type["backend"],
+            avatar: BackendAvatar,
+        })
+    }
+
+    if (data.setup_score) {
+        chips.push({
+            label: "Setup",
+            color: theme.palette.articleColors.type["setup"],
+            avatar: SetupAvatar,
+        })
+    }
+
+    if (data.noteworthy) {
+        chips.push({
+            label: "Noteworthy",
+            color: theme.palette.articleColors.type["noteworthy"],
+            avatar: NoteworthyAvatar,
+        })
+    }
+
+    return chips;
 }
 
-export default withStyles(styles)(ArticleCard);
+class ArticleCard extends React.Component {
+    state = {
+        showSweetAlert: false,
+        isLoggedIn: Boolean(localStorage.getItem('username')),
+    };
+
+    openArticle(data) {
+        var win = window.open(data.url, '_blank');
+        win.focus();
+    }
+
+    markAsRead = (event) => {
+        event.preventDefault();
+
+        if (this.state.isLoggedIn) {
+            // open rating sweet alert.
+            console.log("Rating sweet alert.");
+        }
+        else {
+            // fire sweet alert with login redirect link.
+            console.log("Login link sweet alert.");
+        }
+
+        this.setState({
+            showSweetAlert: true,
+        });
+    }
+
+    render() {
+        const { data, history, theme, classes, ...props } = this.props;
+
+        const chips = getChips(data, theme);
+
+        return (
+            <Grid item xs={12} md={6} lg={4}>
+                <Card className={classes.root}>
+                    <CardActionArea className={classes.childMargins} onClick={this.openArticle.bind(this, data)}>
+                        <CardHeader
+                            classes={{
+                                root: classes.cardHeaderRoot,
+                                content: classes.cardHeaderContent,
+                                subheader: classes.cardHeaderSubHeader,
+                            }}
+                            title={
+                                <Typography className={classes.articleTitle} color="secondary" title={data.title}>
+                                    {data.title}
+                                </Typography>
+                            }
+                            subheader={new Date(data.publish_date).toDateString()} />
+
+                        <ChipsContainer chips={chips} />
+
+                        <Divider className={classes.divider} />
+
+                        <div className={classes.cardContent}>
+                            <div className={classes.articleImageWrapper}>
+                                {
+                                    data.thumbnail && false ?
+                                        <img src={data.thumbnail} className={classes.articleImage} /> :
+                                        <img src={TestImage} className={classes.articleImage} />
+                                }
+                            </div>
+                        </div>
+                    </CardActionArea>
+
+                    <Divider className={classes.divider} />
+
+                    <CardActions className={classes.metaInformation}>
+                        <Typography className={classes.metaText}>
+                            <Timer />
+                            {data.read_time} min
+                    </Typography>
+                        <Button variant="outlined" color="secondary" onClick={this.markAsRead}>
+                            Mark as Read
+                    </Button>
+                    </CardActions>
+
+                    <div className={classes.bottomHighlight} />
+                </Card>
+
+                <SweetAlert
+                    show={this.state.showSweetAlert}
+                    title="Demo"
+                    text="SweetAlert in React"
+                    onConfirm={() => this.setState({ showSweetAlert: false })}
+                />
+            </Grid>
+        )
+    }
+} 
+
+export default withRouter(withTheme()(withStyles(styles)(ArticleCard)));

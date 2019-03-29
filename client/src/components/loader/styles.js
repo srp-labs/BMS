@@ -7,7 +7,9 @@ export default (theme) => ({
         flexGrow: 2,
     },
     loadingRoot: {
-        width: '40%',
+        width: '16%',
+        minWidth: 160,
+        maxWidth: 320,
     },
     loadingMessage: {
         margin: `${2*theme.spacing.unit}px auto`,

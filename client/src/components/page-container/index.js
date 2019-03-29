@@ -6,15 +6,17 @@ import classnames from 'classnames';
 import Loader from '../loader';
 import styles from './styles';
 
-const PageContainer = ({ classes, loading, title, ...props }) => {
+const PageContainer = ({ className, classes, loading, title, ...props }) => {
     
     return (
         loading ?
-        <div className={classes.root} {...props}>
-            <Loader />
-        </div> :
         <Fade in={true}>
-            <div className={classes.root} {...props}>
+            <div className={classnames(className, classes.root)} {...props}>
+                <Loader />
+            </div>
+        </Fade> :
+        <Fade in={true}>
+            <div className={classnames(className, classes.root)} {...props}>
                 {props.children}
             </div>
         </Fade>

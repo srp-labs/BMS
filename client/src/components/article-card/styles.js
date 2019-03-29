@@ -2,10 +2,11 @@ export default theme => ({
     root: {
         position: 'relative',
         display: 'block',
+        width: '100%',
         verticalAlign: 'initial',
         textAlign: 'initial',
         padding: 2 * theme.spacing.unit,
-        backgroundColor: '#0A1F18',
+        backgroundColor: theme.palette.primary.dark,
         borderRadius: 4,
         boxShadow: theme.shadows[1],
         overflow: 'hidden',
@@ -14,32 +15,65 @@ export default theme => ({
         '&:hover': {
             boxShadow: theme.shadows[10],
         },
+    },
 
+    childMargins: {
         '& > *': {
             marginBottom: theme.spacing.unit,
         },
     },
 
-    cardTitle: {
-        display: 'flex',
-        color: '#FFF',
+    cardHeaderRoot: {
+        padding: theme.spacing.unit,
+        paddingBottom: 0,
     },
-    
+
+    cardHeaderContent: {
+        width: '100%',
+    },
+
+    cardHeaderTitle: {
+        fontSize: '1.2em',
+        fontWeight: 500,
+        flexGrow: 2,
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+    },
+
+    cardHeaderSubHeader: {
+        color: theme.palette.secondary.main,
+        paddingTop: theme.spacing.unit/2,
+        fontSize: '1em',
+    },
+
     articleTitle: {
         fontSize: '1.2em',
         fontWeight: 500,
         flexGrow: 2,
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
     },
 
     cardContent: {
         display: 'flex',
     },
 
-    articleImage: {
-        width: 64,
-        height: 64,
+    articleImageWrapper: {
+        position: 'relative',
+        width: '100%',
+        height: 160,
         alignSelf: 'center',
-        marginRight: 2 * theme.spacing.unit,
+        overflow: 'hidden',
+    },
+
+    articleImage: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        width: '100%',
+        transform: 'translate(-50%, -50%)'
     },
 
     articleDescription: {
@@ -53,17 +87,17 @@ export default theme => ({
         width: '100%',
         marginLeft: 'auto',
         marginRight: 'auto',
-        backgroundColor: 'rgba(107,183,86,1)',
+        backgroundColor: theme.palette.secondary.main,
     },
 
     metaInformation: {
         display: 'flex',
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
         alignItems: 'center',
         color: '#cacaca',
 
         [theme.breakpoints.down('md')]: {
-            justifyContent: 'space-around',
+            justifyContent: 'space-between',
         }
 
     },
@@ -87,6 +121,6 @@ export default theme => ({
         height: '4px',
         width: '100%',  
         marginBottom: 0,
-        backgroundColor: 'rgba(107,183,86,1)',
+        backgroundColor: theme.palette.secondary.main,
     },
 })
