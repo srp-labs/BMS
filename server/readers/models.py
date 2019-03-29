@@ -31,3 +31,28 @@ class Reader(models.Model):
 		#do_something
 		super().save(*args, **kwargs)  # Call the "real" save() method.
 		#do_something
+
+
+class MarkAsRead(models.Model):
+
+	# DATABASE FIELDS
+	blog = models.ForeignKey(BlogPost,on_delete=models.CASCADE,blank=True,null=True)
+	reader = models.ForeignKey(Reader,on_delete=models.CASCADE,blank=True,null=True)
+	read = models.BooleanField(default = True)
+	rating = models.IntegerField()
+	date = models.DateField()
+
+	# META CLASS
+	class Meta:
+		verbose_name = 'Mark as Reads'
+		verbose_name_plural = 'Mark As Reads'
+
+	# TO STRING METHOD
+	def __str__(self):
+		return str(self.blog) + "-" + str(self.reader)
+
+	# SAVE METHOD
+	def save(self, *args, **kwargs):
+		#do_something
+		super().save(*args, **kwargs)  # Call the "real" save() method.
+		#do_something
