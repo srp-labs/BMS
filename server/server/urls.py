@@ -13,9 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
+from django.views import generic
+from rest_framework_swagger.views import get_swagger_view
+from django.conf.urls.static import static
+from django.conf import settings
+schema_view = get_swagger_view(title='BMS API DOCS')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^api/docs/$', schema_view),
+    url(r'^', include('blogs.urls')),
 ]
