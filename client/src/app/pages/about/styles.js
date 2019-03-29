@@ -35,10 +35,6 @@ export default theme => ({
     membersContainer: {
         width: '100%',
         margin: 0,
-
-        '& > *': {
-            margin: theme.spacing.unit,
-        },
     },
 
     member: {

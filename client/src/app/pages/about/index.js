@@ -37,16 +37,16 @@ const developers = [
             linkedin: "",
         }
     },
-    {
-        name: "Yogesh Gupta",
-        image: Yogesh,
-        role: "Frontend Developer",
-        links: {
-            github: "",
-            facebook: "",
-            linkedin: "",
-        }
-    }
+    // {
+    //     name: "Yogesh Gupta",
+    //     image: Yogesh,
+    //     role: "Frontend Developer",
+    //     links: {
+    //         github: "",
+    //         facebook: "",
+    //         linkedin: "",
+    //     }
+    // }
 ]
 
 const About = ({classes, ...props}) => {
@@ -69,7 +69,7 @@ const About = ({classes, ...props}) => {
                 <Grid container spacing={16} justify="center" className={classes.membersContainer}>
                     {
                         developers.map((member, index) => 
-                            <Grid key={index} item xs={12} md={4} lg={3}>
+                            <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
                                 <div className={classes.member}>
                                     <img className={classes.memberImage} src={member.image} />
                                     <Typography className={classes.memberText}>{member.name}</Typography>
