@@ -13,6 +13,7 @@ class BlogPost(models.Model):
 	backend_score = models.IntegerField()
 	setup_score = models.IntegerField()
 	reactdj_score = models.IntegerField()
+	read_time = models.IntegerField(blank=True,null=True)
 	difficulty = models.ForeignKey(Difficulty, on_delete=models.CASCADE)
 	publish_date = models.DateField()
 	noteworthy = models.BooleanField(default = False)
