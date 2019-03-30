@@ -9,7 +9,7 @@ import {
     List,
 } from '@material-ui/core';
 
-import { PieChart, Pie, Legend, Cell } from 'recharts';
+import { PieChart, Pie, Legend, Cell, ResponsiveContainer } from 'recharts';
 
 import API from '../../../services/api';
 import { PageContainer, ArticleListItem } from '../../../components';
@@ -111,29 +111,31 @@ class User extends React.Component {
                             <big>S</big>tatistics
                         </Typography>
                         
-                        <PieChart width={600} height={600} >
-                            <Pie
-                                data={data} 
-                                cx={300} 
-                                cy={300}
-                                labelLine={false} 
-                                label={{
-                                    value: "Semester",
-                                    // position: "insideBottom",
-                                    fontFamily: theme.typography.fontFamily,
-                                    fill: "#FFF",
-                                    style: {
-                                        fontWeight: "bold",
-                                    },
-                                }} 
-                                outerRadius={240} 
-                                fill="#8884d8">
-                                {
-                                    data.map((entry, index) => <Cell key={index} fill={COLORS[index % COLORS.length]}/>)
-                                }
-                            </Pie>
-                            <Legend formatter={this.renderLegendText} />
-                        </PieChart>
+                        <ResponsiveContainer width="100%" height={600}>
+                            <PieChart>
+                                <Pie
+                                    data={data} 
+                                    cx="50%" 
+                                    cy="50%"
+                                    // outerRadius={240} 
+                                    labelLine={false} 
+                                    label={{
+                                        value: "Semester",
+                                        // position: "insideBottom",
+                                        fontFamily: theme.typography.fontFamily,
+                                        fill: "#FFF",
+                                        style: {
+                                            fontWeight: "bold",
+                                        },
+                                    }} 
+                                    fill="#8884d8">
+                                    {
+                                        data.map((entry, index) => <Cell key={index} fill={COLORS[index % COLORS.length]}/>)
+                                    }
+                                </Pie>
+                                <Legend formatter={this.renderLegendText} />
+                            </PieChart>
+                        </ResponsiveContainer>
                     </Grid>
 
                     {/*  List of all read/completed articles goes here. */}
