@@ -22,19 +22,19 @@ import FemaleImage from '../../../../assets/images/female.svg';
 import Badge from '../../../../assets/images/medal.svg';
 import ThumbsUp from '../../../../assets/images/thumbs-up-emoji.svg';
 
-const data = [ 
-    {name: 'Front-end', value: 400}, 
-    {name: 'Back-end', value: 300},
-    {name: 'Setup-score', value: 300},
-];
-
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+// const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 class User extends React.Component {
     state = {
         loading: true,
         user: {},
         readArticles: [],
+        progress: {
+            completed: 0,
+            total: 0,
+            percentage: 0,
+        },
+        pieData: [],
     };
     
     // sort descending according to date.
@@ -42,6 +42,38 @@ class User extends React.Component {
         let xDate = new Date(x.read_date), yDate = new Date(y.read_date);
 
         return (xDate < yDate) ? 1 : -1;
+    }
+
+    getPieData = (read) => {
+        let frontend = 0, backend = 0, setup = 0;
+
+        read.forEach(blog => {
+            frontend += blog.frontend_score;
+            backend += blog.backend_score;
+            setup += blog.setup_score;
+        })
+
+        return [
+            { name: "Front-end", value: frontend, color: this.props.theme.palette.articleColors.type['frontend'] },
+            { name: "Back-end", value: backend, color: this.props.theme.palette.articleColors.type['backend'] },
+            { name: "Setup", value: setup, color: this.props.theme.palette.articleColors.type['setup'] },
+        ];
+    }
+
+    getProgressStats = (read, all) => {
+        let completed = 0, total = 0, percentage = 0;
+
+        completed = read.reduce((total, blog) => total + blog.read_time, 0);
+
+        total = all.reduce((total, blog) => total + blog.read_time, 0);
+
+        percentage = (completed * 100) / total;
+
+        return {
+            completed,
+            total,
+            percentage,
+        }
     }
 
     componentDidMount() {
@@ -79,6 +111,10 @@ class User extends React.Component {
                 read_date: readBlogsMap.get(item.id).date,
             })).sort(this.sortByDate);
 
+            let progress = this.getProgressStats(readArticles, blogs);
+
+            let pieData = this.getPieData(readArticles); 
+
             this.setState({
                 loading: false,
                 readArticles: readArticles,
@@ -87,6 +123,8 @@ class User extends React.Component {
                     gender: userDetails.gender.name,
                     region: userDetails.region.name,
                 },
+                progress: progress,
+                pieData: pieData,
             });
         }))
         .catch(console.error);
@@ -101,7 +139,7 @@ class User extends React.Component {
     render() {
         const { classes, theme } = this.props;
 
-        const { loading, user, readArticles } = this.state;
+        const { loading, user, readArticles, progress, pieData } = this.state;
 
         return (
             <PageContainer loading={loading} className={classes.container}>
@@ -136,24 +174,26 @@ class User extends React.Component {
                 <div className={classes.progressSection}>
                     <div className={classes.progressMessage}>
                         <Typography>
-                           {/* Some message based on progress goes here. */}
-                            Nice Going. Keep up the good work. 
+                            {/* Some message based on progress goes here. */}
+                            {
+                                progress.percentage == 100 ?
+                                "Awesome":
+                                "Nice Going. Keep up the good work"
+                            } 
                             <img src={ThumbsUp} className={classes.thumbsUpImage}/>	
                         </Typography>
                         <Typography>
-                            Articles Read: 
+                            Completion: 
                             <span className={classes.articleReadCount}>
                                 {/* Articles Read count goes here */}
-                                84
+                                {progress.percentage}%
                             </span>
-                            {/* Articles total count goes here. */}
-                            / 100
                         </Typography>
                     </div>
                     <LinearProgress 
                         variant="determinate" 
-                        /* Articles Read count goes here */
-                        value={84} 
+                        /* Completion percentage goes here */
+                        value={progress.percentage} 
                         classes={{
                             root: classes.progressRoot,
                             barColorPrimary: classes.progressBarColorPrimary,
@@ -169,7 +209,7 @@ class User extends React.Component {
                         <ResponsiveContainer width="100%" height={600}>
                             <PieChart>
                                 <Pie
-                                    data={data} 
+                                    data={pieData} 
                                     cx="50%" 
                                     cy="50%"
                                     // outerRadius={240} 
@@ -185,7 +225,7 @@ class User extends React.Component {
                                     }} 
                                     fill="#8884d8">
                                     {
-                                        data.map((entry, index) => <Cell key={index} fill={COLORS[index % COLORS.length]}/>)
+                                        pieData.map((entry, index) => <Cell key={index} fill={entry.color}/>)
                                     }
                                 </Pie>
                                 <Legend formatter={this.renderLegendText} />

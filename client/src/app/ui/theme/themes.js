@@ -33,15 +33,15 @@ export const light = createMuiTheme({
             // App only properties.
             difficulty: {
                 'Easy': "#8BC34A",
-                'Medium': "#FFC107",
+                'Medium': "#ff982e",
                 'Advanced': "#FF5722",
             },
             // App only properties.
             type: {
-                'frontend': "#03A9F4",
-                'backend': "#004D40",
-                'setup': "#607D8B",
-                noteworthy: "#000000",
+                'frontend': "#0088FE",
+                'backend': "#00C49F",
+                'setup': "#FFBB28",
+                'noteworthy': "#000000",
             },
         }
     },
