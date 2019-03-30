@@ -190,6 +190,13 @@ export default theme => ({
         background: 'linear-gradient(to right, #DCE35B, #45B649)', 
     },
 
+    statisticsSection: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
     articlesSection: {
     },
     
@@ -199,13 +206,32 @@ export default theme => ({
         textTransform: 'uppercase',
         fontWeight: 'bold',
         color: theme.palette.secondary.main,
+        marginBottom: 2 * theme.spacing.unit,
     },
 
     listRoot: {
+        width: '98%',
         padding: 4 * theme.spacing.unit,
-        
+        height: '600px',
+        overflowX: 'hidden',
+
         '& > li': {
             marginBottom: 2 * theme.spacing.unit,
+        },
+
+        '&::-webkit-scrollbar': {
+            width: 8,
+        },
+        
+        '&::-webkit-scrollbar-track': {
+            borderRadius: 4,
+            backgroundColor: '#c6ccd6',
+            opacity: 0.5,
+        },
+        
+        '&::-webkit-scrollbar-thumb': {
+            borderRadius: 4,
+            backgroundColor: theme.palette.primary.dark,
         },
 
         [theme.breakpoints.down('xs')]: {

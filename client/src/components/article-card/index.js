@@ -102,6 +102,7 @@ class ArticleCard extends React.Component {
                     type: 'success',
                     text: 'Marked as Read !!',
                     timer: 3000,
+                    onClose: () => window.location.reload()
                 })
             else 
                 reactSwal.fire({
@@ -126,9 +127,9 @@ class ArticleCard extends React.Component {
 
         if (isLoggedIn) {
             reactSwal.fire({
-                title: 'Rate your Experience',
+                title: <Typography>Rate your Experience</Typography>,
                 html: <RatingComponent setRating={(rating) => this.setState({ rating })} />,
-                onClose: this.submit,
+                preConfirm: this.submit,
                 customClass: { content: 'sweet-alert-content' }   //defined in index.html style tag
             });
         }
@@ -186,19 +187,17 @@ class ArticleCard extends React.Component {
                             {data.read_time} min
                         </Typography>
                         {
-                            data.read || true ? 
-                            <Button variant="outlined" color="secondary" onClick={this.markAsRead}>Mark as Read</Button> :
+                            data.read ?
                             <div style={{ display: 'flex' }}>
-                                {
-                                    [1, 2, 3, 4, 5].map((count, index) => {
-                                        let rating = 4; 
-
-                                        return rating >= count ?
-                                            <Star key={index} color="secondary" /> :
-                                            <StarBorder key={index} color="secondary" />
-                                    })
-                                }
-                            </div>    
+                            {
+                                [1, 2, 3, 4, 5].map((count, index) => {
+                                    return data.rating >= count ?
+                                    <Star key={index} color="secondary" /> :
+                                    <StarBorder key={index} color="secondary" />
+                                })
+                            }
+                            </div> :
+                            <Button variant="outlined" color="secondary" onClick={this.markAsRead}>Mark as Read</Button>
                         }
                     </CardActions>
         

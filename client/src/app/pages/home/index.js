@@ -31,18 +31,58 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        API.get('blogs/')
-            .then(response => {
-                const { status, list } = response.data;
 
-                // Take the top 3 latest ones.
+        const isLoggedin = Boolean(localStorage.getItem('login-data'));
+
+        const markReadResponseHandler = articlesList => response => {
+            const { status, list } = response.data;
+            
+            // Map of blog-id and data object.
+            let readBlogsMap = new Map();
+            list.forEach(item => readBlogsMap.set(item.blog.id, item));  
+
+            let computedList = articlesList.map(item => {
+                let isRead = readBlogsMap.has(item.id), readObject = readBlogsMap.get(item.id);
+
+                return {
+                    ...item,
+                    read: isRead,
+                    rating: isRead && readObject.rating,
+                }
+            });
+            
+            this.setState({
+                loading: false,
+                articles: computedList,
+            });            
+        }
+        
+        const BlogsResponseHandler = (response) => {
+            const { status, list } = response.data;
+            
+            if(isLoggedin) {
+                let options = {
+                    params: {
+                        username: JSON.parse(localStorage.getItem('login-data')).username,
+                    },
+                };
+                
                 const latestArticles = list.sort(this.sortByDate).slice(0, 3);
 
+                API.get('mark_read/', options)
+                    .then(markReadResponseHandler(latestArticles))
+                    .catch(console.error);
+            }
+            else {
                 this.setState({
                     loading: false,
-                    articles: latestArticles,
+                    articles: list,
                 });
-            })
+            }
+        }
+
+        API.get('blogs/')
+            .then(BlogsResponseHandler)
             .catch(console.error);
     }
 
@@ -65,10 +105,7 @@ class Home extends React.Component {
                         </Hidden>
                     </div>
                     <Typography className={classes.bannerText}>
-                        We are here to share our experiences and knowledge building web apps.
-                    </Typography>
-                    <Typography className={classes.bannerText}>
-                        Django, React and more ...
+                        We've built a simple yet powerful blog management system which allows you to manage your blogs written on different blogging sites. <br /> The system provides features such as maintaining a user-base, and tracking user's progress out-of-the-box. <br /> The system is completely open-source. We plan to incorporate an 'Opportunities' feature - that provides your <br /> blog's users with job postings bases on the reading habits. 
                     </Typography>
                 </div>
     

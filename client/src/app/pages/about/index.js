@@ -54,11 +54,11 @@ const About = ({classes, ...props}) => {
         <PageContainer className={classes.root}>
             <div className={classes.aboutSection}>
                 <Typography className={classes.sectionTitle}>
-                    <big>A</big>bout <big>U</big>s
+                    <big>A</big>bout
                 </Typography>
 
                 <Typography className={classes.aboutText}>
-                    Some words here, some words there, to fill the world with words.
+                    
                 </Typography>
             </div>
             <div className={classes.teamSection}>

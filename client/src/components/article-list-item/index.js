@@ -24,7 +24,12 @@ const ArticleListItem = ({ data, history, theme, classes, ...props }) => {
             <ListItemAvatar>
                 <Avatar src={TestImage} />
             </ListItemAvatar>
-            <ListItemText>{data.title}</ListItemText>
+            <ListItemText
+                classes={{
+                    secondary: classes.secondaryColor,
+                }}
+                primary={data.title}
+                secondary={`Read on ${new Date(data.read_date).toDateString()}`} />
         </ListItem>
     )
 } 

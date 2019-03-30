@@ -15,4 +15,8 @@ export default theme => ({
             boxShadow: theme.shadows[10],
         },
     },
+
+    secondaryColor: {
+        color: 'white',
+    },
 })
