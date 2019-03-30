@@ -68,4 +68,11 @@ export default theme => ({
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
     },
+
+    anchor: {
+        color: '#efbb35',
+        '&:hover': {
+            color: '#efbb35'
+        }
+    }
 })

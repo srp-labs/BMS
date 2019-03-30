@@ -58,7 +58,12 @@ const About = ({classes, ...props}) => {
                 </Typography>
 
                 <Typography className={classes.aboutText}>
-                    
+                    Team from IIIT-Allahabad (Graduands 2019) was part of software development team of <a className={classes.anchor} target="_blank" href="https://aviral.iiita.ac.in/">Aviral Project</a> for the duration January 2018 to March 2019. The objective of the project was to develop Secured , 
+                    Flexible and Robust Software for Admission, Assessment, 
+                    Award Section based on Credit Choice Linked Continuous Assessment 
+                    and Award Ordinance wef from July 2018. We contributed in Design, Development and Deployment and learnt a lot 
+                    about cutting-edge technologies like Django and React JS. We want to share our experience through a series of tutorials on 
+                    <a className={classes.anchor} target="_blank" href="https://medium.com/@srplabs.in"> Medium</a>
                 </Typography>
             </div>
             <div className={classes.teamSection}>

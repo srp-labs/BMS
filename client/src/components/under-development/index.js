@@ -10,7 +10,7 @@ import styles from './styles';
 const UnderDevelopment = ({ classes, ...props }) => {
     return (
         <div className={classes.root} {...props}>
-            <img src={'/static/images/under-construction.svg''} className={classes.image} />
+            <img src={'/static/images/under-construction.svg'} className={classes.image} />
             <Typography className={classes.text}>Working on it.!!</Typography>
         </div>
     )
