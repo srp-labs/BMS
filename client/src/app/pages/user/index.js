@@ -37,11 +37,11 @@ class User extends React.Component {
         readArticles: [],
     };
     
-    // sort ascending according to date.
+    // sort descending according to date.
     sortByDate = (x, y) => {
         let xDate = new Date(x.read_date), yDate = new Date(y.read_date);
 
-        return (xDate > yDate) ? 1 : -1;
+        return (xDate < yDate) ? 1 : -1;
     }
 
     componentDidMount() {
@@ -77,7 +77,7 @@ class User extends React.Component {
                 ...item,
                 rating: readBlogsMap.get(item.id).rating,
                 read_date: readBlogsMap.get(item.id).date,
-            }));
+            })).sort(this.sortByDate);
 
             this.setState({
                 loading: false,
