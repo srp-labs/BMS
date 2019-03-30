@@ -1,0 +1,28 @@
+{% load render_bundle from webpack_loader %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="description" content="SRP Labs: College Administration Portal">
+    <meta name="author" content="Maharshi, Yogesh, Jatin">
+    <meta name="copyright" content="SRP labs">
+
+    <title>SRP Labs</title>
+
+    <link rel="shortcut icon" type="image/png" href="/static/img/favicon.png" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+    {% csrf_token %}
+    <div id="app"></div>
+    <script type="text/javascript" src="/static/bundles/js-bb8fec32fbec979e6fc0.js" ></script>
+    <script type="text/javascript" src="/static/bundles/vendor-bb8fec32fbec979e6fc0.js" ></script>
+</body>
+
+</html>
