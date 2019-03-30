@@ -6,7 +6,7 @@ import {
 import { PageContainer, UnderDevelopment } from '../../../components';
 import styles from './styles';
 
-class Opportunities extends React.Component {
+class Support extends React.Component {
     state = {
         loading: false,
     };
@@ -22,4 +22,4 @@ class Opportunities extends React.Component {
     }
 }
 
-export default withStyles(styles)(Opportunities);
+export default withStyles(styles)(Support);
