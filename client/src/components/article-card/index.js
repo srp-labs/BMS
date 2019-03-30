@@ -160,7 +160,7 @@ class ArticleCard extends React.Component {
                             {data.read_time} min
                         </Typography>
                         {
-                            data.read || false ? 
+                            data.read || true ? 
                             <Button variant="outlined" color="secondary" onClick={this.markAsRead}>Mark as Read</Button> :
                             <div style={{ display: 'flex' }}>
                                 {
