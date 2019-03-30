@@ -24,3 +24,8 @@ class RegionAdmin(ImportExportModelAdmin):
 @admin.register(ApiLog)
 class ApiLogAdmin(ImportExportModelAdmin):
     pass
+
+
+@admin.register(EmailVerification)
+class EmailVerificationAdmin(ImportExportModelAdmin):
+    pass

@@ -147,7 +147,7 @@ USE_L10N = True
 USE_TZ = True
 
 #To prevent XSS attack
-CSRF_COOKIE_HTTPONLY = True
+# CSRF_COOKIE_HTTPONLY = True
 
 #CORS origin allow all domains
 CORS_ORIGIN_ALLOW_ALL = True

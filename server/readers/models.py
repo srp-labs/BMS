@@ -40,7 +40,7 @@ class MarkAsRead(models.Model):
 	reader = models.ForeignKey(Reader,on_delete=models.CASCADE,blank=True,null=True)
 	read = models.BooleanField(default = True)
 	rating = models.IntegerField()
-	date = models.DateField()
+	date = models.DateTimeField(auto_now=True)
 
 	# META CLASS
 	class Meta:
