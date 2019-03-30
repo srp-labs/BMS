@@ -173,7 +173,7 @@ class ArticleCard extends React.Component {
                                 {
                                     data.thumbnail ?
                                         <img src={data.thumbnail} className={classes.articleImage} /> :
-                                        <img src={'/static/images/test1.jpeg'} className={classes.articleImage} />
+                                        <img src={'/static/images/'+data.id+'.jpeg'} className={classes.articleImage} />
                                 }
                             </div>
                         </div>
