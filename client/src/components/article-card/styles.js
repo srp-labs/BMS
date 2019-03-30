@@ -114,6 +114,10 @@ export default theme => ({
         },
     },
 
+    ratingIcon: {
+
+    },
+
     bottomHighlight: {
         position: 'absolute',
         bottom: 0,

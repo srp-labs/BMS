@@ -34,6 +34,7 @@ const Appbar = ({ className, classes, ...props }) => {
                     <AppLink to="/home" label="Home" />
                     <AppLink to="/articles" label="Articles" />
                     <AppLink to="/about" label="About Us" />
+                    <AppLink to="/progres" label="Progress" />
                 </div>
                 
                 <Link to="/login">
