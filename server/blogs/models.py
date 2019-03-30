@@ -8,7 +8,7 @@ class BlogPost(models.Model):
 	# DATABASE FIELDS
 	url = models.URLField(max_length=250)
 	title = models.CharField(max_length=100)
-	thumbnail = models.ImageField(upload_to = 'media/images/blogs/thumbnails',null=True)
+	thumbnail = models.ImageField(upload_to = 'images/blogs',null=True)
 	frontend_score = models.IntegerField()
 	backend_score = models.IntegerField()
 	setup_score = models.IntegerField()
