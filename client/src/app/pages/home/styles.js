@@ -5,7 +5,7 @@ export default theme => ({
         alignItems: 'center',
         justifyContent: 'center',
         height: '75vh',
-        minHeight: '600px',
+        minHeight: '640px',
         background: theme.palette.background.appBarGradient,
         clipPath: 'polygon(50% 0%, 100% 0, 100% 85%, 50% 100%, 0 85%, 0 0)',
         transition: 'clip-path 0.25s',
@@ -53,17 +53,17 @@ export default theme => ({
     },
 
     bannerText: {
-        fontSize: '1.5em',
+        fontSize: '1.2em',
         fontWeight: 100,
         fontStyle: 'italic',
         textAlign: 'center',
         
         [theme.breakpoints.down('md')]: {
-            fontSize: '1.4em',
+            fontSize: '1em',
         },
         
         [theme.breakpoints.down('sm')]: {
-            fontSize: '1.3em',
+            fontSize: '1em',
         },
     },
 
