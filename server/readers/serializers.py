@@ -19,5 +19,5 @@ class MarkAsReadSerializer(ModelSerializer):
 	reader = ReaderSerializer(read_only=True)
 
 	class Meta:
-		model = Reader
+		model = MarkAsRead
 		fields = "__all__"
