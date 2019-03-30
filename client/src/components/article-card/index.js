@@ -27,12 +27,12 @@ import withReactContent from 'sweetalert2-react-content';
 
 import ChipsContainer from './chips-container';
 
-import TestImage from '../../../assets/images/test1.jpeg';
+// import TestImage from '../../../assets/images/test1.jpeg';
 
-import FrontendAvatar from '../../../assets/images/react.svg';
-import BackendAvatar from '../../../assets/images/server.svg';
-import SetupAvatar from '../../../assets/images/management.svg';
-import NoteworthyAvatar from '../../../assets/images/noteworthy.png';
+// import FrontendAvatar from '../../../assets/images/react.svg';
+// import BackendAvatar from '../../../assets/images/server.svg';
+// import SetupAvatar from '../../../assets/images/management.svg';
+// import NoteworthyAvatar from '../../../assets/images/noteworthy.png';
 import RatingComponent from '../rating-component';
 import API from '../../services/api';
 
@@ -48,7 +48,7 @@ const getChips = (data, theme) => {
         chips.push({
             label: "Front-end",
             color: theme.palette.articleColors.type["frontend"],
-            avatar: FrontendAvatar,
+            avatar: '/static/images/react.svg',
         })
     }
 
@@ -56,7 +56,7 @@ const getChips = (data, theme) => {
         chips.push({
             label: "Back-end",
             color: theme.palette.articleColors.type["backend"],
-            avatar: BackendAvatar,
+            avatar: '/static/images/server.svg',
         })
     }
 
@@ -64,7 +64,7 @@ const getChips = (data, theme) => {
         chips.push({
             label: "Setup",
             color: theme.palette.articleColors.type["setup"],
-            avatar: SetupAvatar,
+            avatar: '/static/images/management.svg',
         })
     }
 
@@ -72,7 +72,7 @@ const getChips = (data, theme) => {
         chips.push({
             label: "Noteworthy",
             color: theme.palette.articleColors.type["noteworthy"],
-            avatar: NoteworthyAvatar,
+            avatar: '/static/images/noteworthy.svg',
         })
     }
 
@@ -171,9 +171,9 @@ class ArticleCard extends React.Component {
                         <div className={classes.cardContent}>
                             <div className={classes.articleImageWrapper}>
                                 {
-                                    data.thumbnail && false ?
+                                    data.thumbnail ?
                                         <img src={data.thumbnail} className={classes.articleImage} /> :
-                                        <img src={TestImage} className={classes.articleImage} />
+                                        <img src={'/static/images/test1.jpeg'} className={classes.articleImage} />
                                 }
                             </div>
                         </div>

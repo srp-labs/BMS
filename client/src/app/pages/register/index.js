@@ -17,7 +17,7 @@ import API from '../../../services/api';
 import { PageContainer } from '../../../components';
 import styles from './styles';
 
-import Logo from "../../../../assets/images/logo.svg";
+// import Logo from "../../../../assets/images/logo.svg";
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
 

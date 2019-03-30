@@ -27,7 +27,7 @@ import {
 import AppLink from './link';
 import styles from './styles';
 
-import HeaderLogo from '../../../../../assets/images/header-logo.png';
+// import HeaderLogo from '../../../../../assets/images/header-logo.png';
 
 class Appbar extends React.Component {
     state = {
@@ -62,7 +62,7 @@ class Appbar extends React.Component {
             >
                 <Toolbar className={classes.toolbar}>
                     <Hidden smDown>
-                        <img src={HeaderLogo} style={{ height: 56 }} />    
+                        <img src={'/static/images/header-logo.png'} style={{ height: 56 }} />    
                     </Hidden>
                     <div className={classes.linksContainer}>
                         <AppLink to="/home" label="Home" />

@@ -13,9 +13,9 @@ import API from '../../../services/api';
 import { PageContainer, ArticleCard } from '../../../components';
 import styles from './styles';
 
-import HomeBanner from "../../../../assets/images/homebanner.png";
-import ReactBanner from "../../../../assets/images/react.png";
-import DjangoBanner from "../../../../assets/images/django.png";
+// import HomeBanner from "../../../../assets/images/homebanner.png";
+// import ReactBanner from "../../../../assets/images/react.png";
+// import DjangoBanner from "../../../../assets/images/django.png";
 
 class Home extends React.Component {
     state = {
@@ -97,11 +97,11 @@ class Home extends React.Component {
                 <div className={classes.bannerSection}>
                     <div className={classes.bannerImagesContainer}>
                         <Hidden smDown>
-                            <img className={classes.bannerSideImage} src={DjangoBanner} />
+                            <img className={classes.bannerSideImage} src={'/static/images/django.png'} />
                         </Hidden>
-                        <img className={classes.bannerImage} src={HomeBanner} />
+                        <img className={classes.bannerImage} src={'/static/images/homebanner.png'} />
                         <Hidden smDown>
-                            <img className={classes.bannerSideImage} src={ReactBanner} style={{ transform: 'scale(0.6)' }}/>
+                            <img className={classes.bannerSideImage} src={'/static/images/react.png'} style={{ transform: 'scale(0.6)' }}/>
                         </Hidden>
                     </div>
                     <Typography className={classes.bannerText}>

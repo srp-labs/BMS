@@ -17,10 +17,10 @@ import API from '../../../services/api';
 import { PageContainer, ArticleListItem } from '../../../components';
 import styles from './styles';
 
-import MaleImage from '../../../../assets/images/male.svg';
-import FemaleImage from '../../../../assets/images/female.svg';
-import Badge from '../../../../assets/images/medal.svg';
-import ThumbsUp from '../../../../assets/images/thumbs-up-emoji.svg';
+// import MaleImage from '../../../../assets/images/male.svg';
+// import FemaleImage from '../../../../assets/images/female.svg';
+// import Badge from '../../../../assets/images/medal.svg';
+// import ThumbsUp from '../../../../assets/images/thumbs-up-emoji.svg';
 
 // const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
@@ -147,7 +147,7 @@ class User extends React.Component {
                     <div className={classes.userInfoContent}>
                         {/* Image goes here */}    
                         <img 
-                            src={user.gender == "Male" ? MaleImage : FemaleImage} 
+                            src={user.gender == "Male" ? '/static/images/male.svg' : '/static/images/female.svg'} 
                             className={classes.userImage} />
                         <Typography className={classes.name}>
                             {/* Name goes here */}
@@ -164,7 +164,7 @@ class User extends React.Component {
                             {/* Need an array of badges, with some type - frontend, backend so as to choose from predefined images. */}
                             {
                                 [0, 1, 2].map((badge, index) => 
-                                    <img key={index} src={Badge} className={classes.badge} />
+                                    <img key={index} src={'/static/images/medal.svg'} className={classes.badge} />
                                 )
                             }
                         </div>
@@ -180,7 +180,7 @@ class User extends React.Component {
                                 "Awesome":
                                 "Nice Going. Keep up the good work"
                             } 
-                            <img src={ThumbsUp} className={classes.thumbsUpImage}/>	
+                            <img src={'/static/images/thumbs-up-emoji.svg'} className={classes.thumbsUpImage}/>	
                         </Typography>
                         <Typography>
                             Completion: 

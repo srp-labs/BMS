@@ -8,18 +8,18 @@ import {
 import PageContainer from '../../../components/page-container';
 import styles from './styles';
 
-import Jatin from '../../../../assets/images/jatin.jpg';
-import Maharshi from '../../../../assets/images/maharshi.jpg';
-import Yogesh from '../../../../assets/images/yogesh.jpg';
+// import Jatin from '../../../../assets/images/jatin.jpg';
+// import Maharshi from '../../../../assets/images/maharshi.jpg';
+// import Yogesh from '../../../../assets/images/yogesh.jpg';
 
-import Github from '../../../../assets/images/github-logo.svg';
-import Facebook from '../../../../assets/images/linkedin-logo.svg';
-import Linkedin from '../../../../assets/images/facebook-logo.svg';
+// import Github from '../../../../assets/images/github-logo.svg';
+// import Facebook from '../../../../assets/images/linkedin-logo.svg';
+// import Linkedin from '../../../../assets/images/facebook-logo.svg';
 
 const developers = [
     {
         name: "Jatin Goel",
-        image: Jatin,
+        image: '/static/images/jatin.jpg',
         role: "Backend Developer",
         links: {
             github: "",
@@ -29,7 +29,7 @@ const developers = [
     },
     {
         name: "Maharshi Roy",
-        image: Maharshi,
+        image: '/static/images/maharshi.jpg',
         role: "Frontend Developer",
         links: {
             github: "",
@@ -76,13 +76,13 @@ const About = ({classes, ...props}) => {
                                     <Typography className={classes.memberText}>{member.role}</Typography>
                                     <div className={classes.linksSection}>
                                         <a href={member.links.github}>
-                                            <img className={classes.linkImage} src={Github} style={{ color: 'blue' }} />
+                                            <img className={classes.linkImage} src={'/static/images/github-logo.svg'} style={{ color: 'blue' }} />
                                         </a>
                                         <a href={member.links.facebook}>
-                                            <img className={classes.linkImage} src={Facebook} />
+                                            <img className={classes.linkImage} src={'/static/images/facebook-logo.svg'} />
                                         </a>
                                         <a href={member.links.linkedin}>
-                                            <img className={classes.linkImage} src={Linkedin} />
+                                            <img className={classes.linkImage} src={'/static/images/linkedin-logo.svg'} />
                                         </a>
                                     </div>
                                 </div>

@@ -12,7 +12,7 @@ import {
 
 import styles from './styles';
 
-import TestImage from '../../../assets/images/test1.jpeg';
+// import TestImage from '../../../assets/images/test1.jpeg';
 
 const ArticleListItem = ({ data, history, theme, classes, ...props }) => {
     const openArticle = () => {
@@ -22,7 +22,11 @@ const ArticleListItem = ({ data, history, theme, classes, ...props }) => {
     return (
         <ListItem className={classes.root} onClick={openArticle}>
             <ListItemAvatar>
-                <Avatar src={TestImage} />
+                {
+                    data.thumbnail ?
+                        <Avatar src={data.thumbnail} /> :
+                        <Avatar src={'/static/images/test1.jpeg'} />
+                }
             </ListItemAvatar>
             <ListItemText
                 classes={{

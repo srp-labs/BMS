@@ -5,12 +5,12 @@ import {
 
 import styles from './styles';
 
-import Image from '../../../assets/images/under-construction.svg';
+// import Image from '../../../assets/images/under-construction.svg';
 
 const UnderDevelopment = ({ classes, ...props }) => {
     return (
         <div className={classes.root} {...props}>
-            <img src={Image} className={classes.image} />
+            <img src={'/static/images/under-construction.svg''} className={classes.image} />
             <Typography className={classes.text}>Working on it.!!</Typography>
         </div>
     )
