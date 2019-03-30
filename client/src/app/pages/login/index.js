@@ -10,6 +10,8 @@ import {
     TextField,
     Button,
 } from '@material-ui/core';
+import withReactContent from 'sweetalert2-react-content';
+import Swal from 'sweetalert2';
 
 import API from '../../../services/api';
 import { PageContainer } from '../../../components';
@@ -21,42 +23,45 @@ class Login extends React.Component {
     state = {
         loading: false,
         credentials: {
-            username: "",
-            password: "",
+            username: '',
+            password: '',
         },
     };
 
     login = (event) => {
         event.preventDefault();
-        
-        let data = {
-            ...this.state.credentials,
-        };
 
-        // Set loading to true.
-        /* 
         this.setState({
             loading: true,
-        }); 
-        */
+        });
 
-       
-        // perform API query to initiate login.
-        /*
-        API.post('login/', data)
-            .then(response => {
-                // Save to localstorage.
-                localStorage.setItem("username", data.username);
-                localStorage.setItem("authToken", response.token); ???
-                
-                this.props.history.push("/redirect/home");
-            })
-            .catch(error => {
-                this.setState({
-                    loading: false,
-                })
-            }) 
-        */ 
+        const errorSwal = withReactContent(Swal);
+        
+        API.post('token-login/', { ...this.state.credentials })
+        .then(response => {
+            if (response.data.status == 'SUCCESS') {
+                localStorage.setItem('login-data', JSON.stringify(response.data));
+                this.props.history.push("/home");
+            }
+            else 
+                errorSwal.fire({
+                    type: 'warning',
+                    title: 'Invalid Credentials',
+                    text: 'Retry Login',
+                    timer: 3000
+                });
+        })
+        .catch(error => {
+            this.setState({
+                loading: false,
+            });
+            errorSwal.fire({
+                type: 'error',
+                title: 'Error Occured',
+                text: 'Retry Login',
+                timer: 3000,
+            });
+        })
     }
 
     handleForm = name => event => this.setState({
