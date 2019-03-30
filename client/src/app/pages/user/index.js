@@ -2,13 +2,14 @@ import React from 'react';
 import classnames from 'classnames';
 import {
     withStyles, 
+    withTheme,
     Typography,
     Grid,
     LinearProgress,
     List,
 } from '@material-ui/core';
 
-import { PieChart, Pie, ResponsiveContainer, Cell } from 'recharts';
+import { PieChart, Pie, Legend, Cell } from 'recharts';
 
 import API from '../../../services/api';
 import { PageContainer, ArticleListItem } from '../../../components';
@@ -19,9 +20,9 @@ import Badge from '../../../../assets/images/medal.svg';
 import ThumbsUp from '../../../../assets/images/thumbs-up-emoji.svg';
 
 const data = [ 
-    {name: 'Group A', value: 400}, 
-    {name: 'Group B', value: 300},
-    {name: 'Group C', value: 300},
+    {name: 'Front-end', value: 400}, 
+    {name: 'Back-end', value: 300},
+    {name: 'Setup-score', value: 300},
 ];
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
@@ -38,8 +39,14 @@ class User extends React.Component {
             .catch(console.error);
     }
 
+    renderLegendText(value, entry) {
+        const { color } = entry;
+      
+        return <span style={{ color }}><Typography>{value}</Typography></span>;
+    }
+
     render() {
-        const { classes } = this.props;
+        const { classes, theme } = this.props;
 
         const { loading, list } = this.state;
 
@@ -97,45 +104,57 @@ class User extends React.Component {
                             barColorPrimary: classes.progressBarColorPrimary,
                         }} />
                 </div>
+                
+                <Grid container spacing={16} style={{ margin: 0, width: '100%', }}>
+                    <Grid item xs={12} md={6} className={classes.statisticsSection}>
+                        <Typography className={classes.sectionTitle} color="secondary">
+                            <big>S</big>tatistics
+                        </Typography>
                         
-                <div className={classes.articlesSection}>
-                    <Typography className={classes.sectionTitle} color="secondary">
-                        <big>S</big>tatistics
-                    </Typography>
-                    
-                    <PieChart width={600} height={600} >
-                        <Pie
-                            data={data} 
-                            cx={300} 
-                            cy={300} 
-                            labelLine={false}
-                            outerRadius={240} 
-                            fill="#8884d8">
-                            {
-                                data.map((entry, index) => <Cell key={index} fill={COLORS[index % COLORS.length]}/>)
-                            }
-                        </Pie>
-                    </PieChart>
-                </div>
+                        <PieChart width={600} height={600} >
+                            <Pie
+                                data={data} 
+                                cx={300} 
+                                cy={300}
+                                labelLine={false} 
+                                label={{
+                                    value: "Semester",
+                                    // position: "insideBottom",
+                                    fontFamily: theme.typography.fontFamily,
+                                    fill: "#FFF",
+                                    style: {
+                                        fontWeight: "bold",
+                                    },
+                                }} 
+                                outerRadius={240} 
+                                fill="#8884d8">
+                                {
+                                    data.map((entry, index) => <Cell key={index} fill={COLORS[index % COLORS.length]}/>)
+                                }
+                            </Pie>
+                            <Legend formatter={this.renderLegendText} />
+                        </PieChart>
+                    </Grid>
 
-                {/*  List of all read/completed articles goes here. */}
-                <div className={classes.articlesSection}>
-                    <Typography className={classes.sectionTitle} color="secondary">
-                        <big>C</big>ompleted <big>A</big>rticles
-                    </Typography>
-                    <List className={classes.listRoot}>
-                        {
-                            list.map((article, index) =>
-                                <ArticleListItem 
-                                    key={index}
-                                    data={article} />
-                            )
-                        }
-                    </List>
-                </div>
+                    {/*  List of all read/completed articles goes here. */}
+                    <Grid item xs={12} md={6} className={classes.articlesSection}>
+                        <Typography className={classes.sectionTitle} color="secondary">
+                            <big>C</big>ompleted <big>A</big>rticles
+                        </Typography>
+                        <List className={classes.listRoot}>
+                            {
+                                list.map((article, index) =>
+                                    <ArticleListItem 
+                                        key={index}
+                                        data={article} />
+                                )
+                            }
+                        </List>
+                    </Grid>
+                </Grid>
             </PageContainer>
         )
     }
 }
 
-export default withStyles(styles)(User);
+export default withTheme()(withStyles(styles)(User));
