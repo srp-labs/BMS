@@ -63,10 +63,10 @@ class Home extends React.Component {
             if(isLoggedin) {
                 let options = {
                     params: {
-                        username: localStorage.getItem('username'),
+                        username: JSON.parse(localStorage.getItem('login-data')).username,
                     },
                 };
-
+                
                 const latestArticles = list.sort(this.sortByDate).slice(0, 3);
 
                 API.get('mark_read/', options)

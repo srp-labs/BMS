@@ -47,7 +47,7 @@ class List extends React.Component {
             if(isLoggedin) {
                 let options = {
                     params: {
-                        username: localStorage.getItem('username'),
+                        username: JSON.parse(localStorage.getItem('login-data')).username,
                     },
                 };
 

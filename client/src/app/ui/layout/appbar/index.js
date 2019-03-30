@@ -21,10 +21,13 @@ import {
 import {
     Menu as MenuIcon,
     Person,
+    Settings,
 } from '@material-ui/icons';
 
 import AppLink from './link';
 import styles from './styles';
+
+import HeaderLogo from '../../../../../assets/images/header-logo.png';
 
 class Appbar extends React.Component {
     state = {
@@ -50,14 +53,16 @@ class Appbar extends React.Component {
         
         const isLoggedIn = Boolean(localStorage.getItem('login-data'));
         
+        const username = isLoggedIn && JSON.parse(localStorage.getItem('login-data')).username;
+
         return (
             <AppBar 
                 className={classnames(classes.root, className)}
                 {...props}
             >
                 <Toolbar className={classes.toolbar}>
-                    <Hidden xlDown>
-                        <MenuIcon color="primary" />    
+                    <Hidden smDown>
+                        <img src={HeaderLogo} style={{ height: 56 }} />    
                     </Hidden>
                     <div className={classes.linksContainer}>
                         <AppLink to="/home" label="Home" />
@@ -69,9 +74,10 @@ class Appbar extends React.Component {
                     
                     {
                         isLoggedIn ?
-                        <div style={{ position: 'relative' }}>
+                        <div style={{ position: 'relative', display: 'flex', flexDirection: 'row', alignItems: 'center', fontSize: '1em' }}>
+                            <Typography style={{ fontSize: '1em' }}>Hi, {username.charAt(0).toUpperCase() + username.slice(1)} </Typography>
                             <IconButton buttonRef={node => this.anchorEl = node} onClick={this.handleToggle}>
-                                <Person className={classes.icon} />    
+                                <Settings className={classes.icon} />    
                             </IconButton>
                             
                             <Popper open={open} anchorEl={this.anchorEl} transition disablePortal>

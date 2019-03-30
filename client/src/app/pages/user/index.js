@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import { withRouter } from 'react-router-dom';
 import {
     withStyles, 
     withTheme,
@@ -10,12 +11,14 @@ import {
 } from '@material-ui/core';
 
 import { PieChart, Pie, Legend, Cell, ResponsiveContainer } from 'recharts';
+import axios from 'axios';
 
 import API from '../../../services/api';
 import { PageContainer, ArticleListItem } from '../../../components';
 import styles from './styles';
 
-import AccountImage from '../../../../assets/images/logo.svg';
+import MaleImage from '../../../../assets/images/male.svg';
+import FemaleImage from '../../../../assets/images/female.svg';
 import Badge from '../../../../assets/images/medal.svg';
 import ThumbsUp from '../../../../assets/images/thumbs-up-emoji.svg';
 
@@ -30,13 +33,63 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 class User extends React.Component {
     state = {
         loading: true,
-        list: [],
+        user: {},
+        readArticles: [],
     };
     
+    // sort ascending according to date.
+    sortByDate = (x, y) => {
+        let xDate = new Date(x.read_date), yDate = new Date(y.read_date);
+
+        return (xDate > yDate) ? 1 : -1;
+    }
+
     componentDidMount() {
-        API.get('blogs/')
-            .then(response => this.setState({ list: response.data.list, loading: false }))
-            .catch(console.error);
+        const isLoggedin = Boolean(localStorage.getItem('login-data'));
+
+        if(!isLoggedin) {
+            this.props.history.push('/home');
+        }
+
+        let options = {
+            params: {
+                username: JSON.parse(localStorage.getItem('login-data')).username,
+            },
+        };
+
+        axios.all([
+            API.get('blogs/'),
+            API.get('mark_read/', options),
+            API.get('reader_detail/', options),
+        ])
+        .then(axios.spread((blogs_, readList_, userDetails_) => {
+            let blogs, readList, userDetails;
+
+            blogs = blogs_.data.list;
+            readList = readList_.data.list;
+            userDetails = userDetails_.data.detail;
+            
+            // Map of blog-id and data object.
+            let readBlogsMap = new Map();
+            readList.forEach(item => readBlogsMap.set(item.blog.id, item));
+
+            let readArticles = blogs.filter(item => readBlogsMap.has(item.id)).map(item => ({
+                ...item,
+                rating: readBlogsMap.get(item.id).rating,
+                read_date: readBlogsMap.get(item.id).date,
+            }));
+
+            this.setState({
+                loading: false,
+                readArticles: readArticles,
+                user: {
+                    ...userDetails,
+                    gender: userDetails.gender.name,
+                    region: userDetails.region.name,
+                },
+            });
+        }))
+        .catch(console.error);
     }
 
     renderLegendText(value, entry) {
@@ -48,23 +101,25 @@ class User extends React.Component {
     render() {
         const { classes, theme } = this.props;
 
-        const { loading, list } = this.state;
+        const { loading, user, readArticles } = this.state;
 
         return (
             <PageContainer loading={loading} className={classes.container}>
                 <div className={classes.userInfoSection}>
                     <div className={classes.userInfoContent}>
                         {/* Image goes here */}    
-                        <img src={AccountImage} className={classes.userImage} />
+                        <img 
+                            src={user.gender == "Male" ? MaleImage : FemaleImage} 
+                            className={classes.userImage} />
                         <Typography className={classes.name}>
                             {/* Name goes here */}
-                            Adam , the First
+                            {user.full_name}
                         </Typography>
                         <div className={classes.extraTextWrapper}>
                             {/* Email goes here */}    
-                            <Typography className={classes.extra}>icandoit@nike.slogan</Typography>
+                            <Typography className={classes.extra}>{user.email}</Typography>
                             {/* Region goes here */}    
-                            <Typography className={classes.extra}>Bermuda Triangle</Typography>
+                            <Typography className={classes.extra}>{user.region}</Typography>
                         </div>
 
                         <div className={classes.badges}>
@@ -145,7 +200,7 @@ class User extends React.Component {
                         </Typography>
                         <List className={classes.listRoot}>
                             {
-                                list.map((article, index) =>
+                                readArticles.map((article, index) =>
                                     <ArticleListItem 
                                         key={index}
                                         data={article} />
@@ -159,4 +214,4 @@ class User extends React.Component {
     }
 }
 
-export default withTheme()(withStyles(styles)(User));
+export default withRouter(withTheme()(withStyles(styles)(User)));
