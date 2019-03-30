@@ -93,6 +93,9 @@ class Home extends React.Component {
                         </Link>
                     </Button>
                 </div>
+
+                <div className={classes.timelineSection}>
+                </div>
     
             </PageContainer>
         )

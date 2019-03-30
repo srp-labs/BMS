@@ -27,4 +27,8 @@ export default theme => ({
     icon: {
         color: '#FFF',
     },
+
+    menuRoot: {
+        backgroundColor: theme.palette.background.body,
+    },
 })

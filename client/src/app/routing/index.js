@@ -6,7 +6,7 @@ import Articles from '../pages/articles';
 import About from '../pages/about';
 import Login from '../pages/login';
 import Register from '../pages/register';
-import Progress from '../pages/progress';
+import User from '../pages/user';
 
 export default () => (
     <Switch>
@@ -15,7 +15,7 @@ export default () => (
         <Route exact path="/about" component={About} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
-        <Route exact path="/progress" component={Progress} />
+        <Route exact path="/profile" component={User} />
         <Route render={() => <Redirect to="/home" />} />
     </Switch>
 );
