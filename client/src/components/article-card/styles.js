@@ -106,6 +106,7 @@ export default theme => ({
         display: 'flex',
         alignItems: 'center',
         fontWeight: 200,
+        height: 32,
         marginLeft: theme.spacing.unit / 2,
         marginRight: theme.spacing.unit,
 

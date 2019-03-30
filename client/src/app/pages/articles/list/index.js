@@ -16,16 +16,57 @@ class List extends React.Component {
     };
 
     componentDidMount() {
-        API.get('blogs/')
-            .then(response => {
-                const { status, list } = response.data;
+        const isLoggedin = Boolean(localStorage.getItem('login-data'));
 
+        const markReadResponseHandler = articlesList => response => {
+            const { status, list } = response.data;
+            
+            // Map of blog-id and data object.
+            let readBlogsMap = new Map();
+            list.forEach(item => readBlogsMap.set(item.blog.id, item));  
+
+            let computedList = articlesList.map(item => {
+                let isRead = readBlogsMap.has(item.id), readObject = readBlogsMap.get(item.id);
+
+                return {
+                    ...item,
+                    read: isRead,
+                    rating: isRead && readObject.rating,
+                }
+            });
+            
+            this.setState({
+                loading: false,
+                articles: computedList,
+            });            
+        }
+        
+        const BlogsResponseHandler = (response) => {
+            const { status, list } = response.data;
+            
+            if(isLoggedin) {
+                let options = {
+                    params: {
+                        username: localStorage.getItem('username'),
+                    },
+                };
+
+                API.get('mark_read/', options)
+                    .then(markReadResponseHandler(list))
+                    .catch(console.error);
+            }
+            else {
                 this.setState({
                     loading: false,
                     articles: list,
                 });
-            })
+            }
+        }
+
+        API.get('blogs/')
+            .then(BlogsResponseHandler)
             .catch(console.error);
+
     }
 
 

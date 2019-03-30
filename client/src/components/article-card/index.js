@@ -186,19 +186,17 @@ class ArticleCard extends React.Component {
                             {data.read_time} min
                         </Typography>
                         {
-                            data.read || true ? 
-                            <Button variant="outlined" color="secondary" onClick={this.markAsRead}>Mark as Read</Button> :
+                            data.read ?
                             <div style={{ display: 'flex' }}>
-                                {
-                                    [1, 2, 3, 4, 5].map((count, index) => {
-                                        let rating = 4; 
-
-                                        return rating >= count ?
-                                            <Star key={index} color="secondary" /> :
-                                            <StarBorder key={index} color="secondary" />
-                                    })
-                                }
-                            </div>    
+                            {
+                                [1, 2, 3, 4, 5].map((count, index) => {
+                                    return data.rating >= count ?
+                                    <Star key={index} color="secondary" /> :
+                                    <StarBorder key={index} color="secondary" />
+                                })
+                            }
+                            </div> :
+                            <Button variant="outlined" color="secondary" onClick={this.markAsRead}>Mark as Read</Button>
                         }
                     </CardActions>
         
