@@ -63,7 +63,6 @@ class Appbar extends React.Component {
                         <AppLink to="/home" label="Home" />
                         <AppLink to="/articles" label="Articles" />
                         <AppLink to="/opportunities" label="Opportunities" />
-                        <AppLink to="/donate" label="Donate" />
                         <AppLink to="/support" label="Support" />
                         <AppLink to="/about" label="About Us" />
                     </div>
