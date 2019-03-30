@@ -54,6 +54,11 @@ export const light = createMuiTheme({
             variant: "contained",
             color: "primary"
         },
+        MuiMenuItem: {
+            style: {
+                color: "black",
+            },
+        },
     },
     overrides: {
     }

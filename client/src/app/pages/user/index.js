@@ -186,7 +186,7 @@ class User extends React.Component {
                             Completion: 
                             <span className={classes.articleReadCount}>
                                 {/* Articles Read count goes here */}
-                                {progress.percentage}%
+                                {parseInt(progress.percentage)}%
                             </span>
                         </Typography>
                     </div>
@@ -240,11 +240,15 @@ class User extends React.Component {
                         </Typography>
                         <List className={classes.listRoot}>
                             {
+                                readArticles.length > 0 ?
                                 readArticles.map((article, index) =>
                                     <ArticleListItem 
                                         key={index}
                                         data={article} />
-                                )
+                                ):
+                                <Typography>
+                                    You've not read any article yet.
+                                </Typography>
                             }
                         </List>
                     </Grid>

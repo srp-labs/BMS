@@ -296,7 +296,7 @@ class Register extends React.Component {
                                     className={classes.formControl}
                                     inputProps={{
                                         className: classes.textFieldInput,
-                                    }} 
+                                    }}
                                     label="Gender" 
                                     value={credentials.gender.value}
                                 >
@@ -313,7 +313,7 @@ class Register extends React.Component {
                                     className={classes.formControl}
                                     inputProps={{
                                         className:classes.textFieldInput,
-                                    }} 
+                                    }}
                                     label="Region" 
                                     value={credentials.region.value}
                                 >
