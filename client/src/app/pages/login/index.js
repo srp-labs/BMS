@@ -39,8 +39,10 @@ class Login extends React.Component {
         
         API.post('token-login/', { ...this.state.credentials })
         .then(response => {
-            if (response.data.status == 'SUCCESS') {
-                localStorage.setItem('login-data', JSON.stringify(response.data));
+            const { data } = response;
+            if (data.status == 'SUCCESS') {
+                data['username'] = this.state.credentials.username;
+                localStorage.setItem('login-data', JSON.stringify(data));
                 this.props.history.push("/home");
             }
             else 
