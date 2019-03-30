@@ -20,7 +20,7 @@ import {
 import styles from './styles';
 
 import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import withReactContent from 'sweetalert2-react-content';
 
 import ChipsContainer from './chips-container';
 
@@ -30,6 +30,8 @@ import FrontendAvatar from '../../../assets/images/react.svg';
 import BackendAvatar from '../../../assets/images/server.svg';
 import SetupAvatar from '../../../assets/images/management.svg';
 import NoteworthyAvatar from '../../../assets/images/noteworthy.png';
+import RatingComponent from '../rating-component';
+import API from '../../services/api';
 
 const getChips = (data, theme) => {
     let chips = [
@@ -76,8 +78,7 @@ const getChips = (data, theme) => {
 
 class ArticleCard extends React.Component {
     state = {
-        showSweetAlert: false,
-        isLoggedIn: Boolean(localStorage.getItem('username')),
+        rating: 0,
     };
 
     openArticle(data) {
@@ -85,31 +86,56 @@ class ArticleCard extends React.Component {
         win.focus();
     }
 
+    submit = () => {
+        const reactSwal = withReactContent(Swal);
+        
+        API.post('mark_read/', {
+            username: JSON.parse(localStorage.getItem('login-data')).username,
+            rating: this.state.rating,
+            blog: this.props.data
+        }).then(response => {
+            if (response.data.status == 'SUCCESS') 
+                reactSwal.fire({
+                    type: 'success',
+                    text: 'Marked as Read !!',
+                    timer: 3000,
+                })
+            else 
+                reactSwal.fire({
+                    type: 'error',
+                    text: 'Error Occured',
+                    timer: 3000,
+                });
+        })
+        .catch(error => reactSwal.fire({
+            type: 'error',
+            text: 'Error Occured',
+            timer: 3000,
+        }));
+    }
+
     markAsRead = (event) => {
         event.preventDefault();
+        const reactSwal = withReactContent(Swal);
 
-        if (this.state.isLoggedIn) {
-            // open rating sweet alert.
-            console.log("Rating sweet alert.");
+        //check if user is logged-in
+        const isLoggedIn = localStorage.getItem('login-data');
+
+        if (isLoggedIn) {
+            reactSwal.fire({
+                title: 'Rate your Experience',
+                html: <RatingComponent setRating={(rating) => this.setState({ rating })} />,
+                onClose: this.submit,
+                customClass: { content: 'sweet-alert-content' }   //defined in index.html style tag
+            });
         }
-        else {
-            // fire sweet alert with login redirect link.
-            console.log("Login link sweet alert.");
-        }
-
-        const MySwal = withReactContent(Swal);
-
-        MySwal.fire({
-            title: <p>Hello World</p>,
-            footer: 'Copyright 2018',
-            // onOpen: () => {
-            //     MySwal.clickConfirm()
-            // }
-        });
-
-        this.setState({
-            showSweetAlert: true,
-        });
+        else
+            reactSwal.fire({
+                title: 'Login Required',
+                text: 'Please login first to mark rating',
+                timer: 3000,
+                onClose: () => this.props.history.push('/login')
+            })
     }
 
     render() {
@@ -160,7 +186,7 @@ class ArticleCard extends React.Component {
                             Mark as Read
                     </Button>
                     </CardActions>
-
+        
                     <div className={classes.bottomHighlight} />
                 </Card>
             </Grid>
