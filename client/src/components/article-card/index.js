@@ -16,6 +16,9 @@ import {
 
 import {
     Timer,
+    Star,
+    StarBorder,
+    StarHalf,
 } from '@material-ui/icons';
 import styles from './styles';
 
@@ -181,10 +184,22 @@ class ArticleCard extends React.Component {
                         <Typography className={classes.metaText}>
                             <Timer />
                             {data.read_time} min
-                    </Typography>
-                        <Button variant="outlined" color="secondary" onClick={this.markAsRead}>
-                            Mark as Read
-                    </Button>
+                        </Typography>
+                        {
+                            data.read || true ? 
+                            <Button variant="outlined" color="secondary" onClick={this.markAsRead}>Mark as Read</Button> :
+                            <div style={{ display: 'flex' }}>
+                                {
+                                    [1, 2, 3, 4, 5].map((count, index) => {
+                                        let rating = 4; 
+
+                                        return rating >= count ?
+                                            <Star key={index} color="secondary" /> :
+                                            <StarBorder key={index} color="secondary" />
+                                    })
+                                }
+                            </div>    
+                        }
                     </CardActions>
         
                     <div className={classes.bottomHighlight} />

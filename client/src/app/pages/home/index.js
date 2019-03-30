@@ -87,7 +87,7 @@ class Home extends React.Component {
 
                     <Button variant="outlined" color="secondary" className={classes.viewAllLink}>
                         <Link to="/articles">
-                            <Typography color="secondary">
+                            <Typography color="secondary" style={{ padding: '5px 16px'}}>
                                 View All Articles
                             </Typography>
                         </Link>

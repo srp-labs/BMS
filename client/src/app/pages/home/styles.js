@@ -95,6 +95,7 @@ export default theme => ({
         width: 200,
         fontWeight: 'bold',
         margin: '0 auto',
+        padding: 0,
 
         '& a': {
             textDecoration: 'none',
