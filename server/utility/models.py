@@ -90,3 +90,23 @@ class ApiLog(models.Model):
 	def save(self, *args, **kwargs):
 		#do_something
 		super().save(*args, **kwargs)  # Call the "real" save() method.
+
+
+class EmailVerification(models.Model):
+	email = models.EmailField()
+	code = models.CharField(max_length=6)
+	datetime = models.DateTimeField(auto_now_add=True)
+	
+	# META CLASS
+	class Meta:
+		verbose_name = 'Email Code'
+		verbose_name_plural = 'Email Codes'
+
+	# TO STRING METHOD
+	def __str__(self):
+		return str(self.email) + "-" + str(self.code)
+
+	# SAVE METHOD
+	def save(self, *args, **kwargs):
+		#do_something
+		super().save(*args, **kwargs)  # Call the "real" save() method.
