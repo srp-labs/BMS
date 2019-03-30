@@ -1,7 +1,7 @@
 export default theme => ({
     container: {
         '& > div': {
-            marginBottom: 3 * theme.spacing.unit,
+            marginBottom: 8 * theme.spacing.unit,
         },
     },
 
@@ -53,6 +53,10 @@ export default theme => ({
             position: 'initial',
             transform: 'translate(0, 0)',
         },
+
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '2.5em',
+        },
     },
 
     extraTextWrapper: {
@@ -103,6 +107,12 @@ export default theme => ({
             height: 80,
             margin: 2 * theme.spacing.unit,
         },
+        
+        [theme.breakpoints.down('xs')]: {
+            width: 60, 
+            height: 60,
+            margin: theme.spacing.unit,
+        },
     },
 
     progressSection: {
@@ -112,8 +122,8 @@ export default theme => ({
         transition: 'all 0.25s',
 
         [theme.breakpoints.down('md')]: {
-            paddingLeft: theme.spacing.unit,
-            paddingRight: theme.spacing.unit,
+            paddingLeft: 2 * theme.spacing.unit,
+            paddingRight: 2 * theme.spacing.unit,
         },
     },
 
@@ -123,13 +133,47 @@ export default theme => ({
         alignItems: 'center',
 
         '& > p': {
+            fontWeight: 200,
             fontSize: '1.2em',
+        },
+
+        [theme.breakpoints.down('md')]: {
+            '& > p': {
+                fontSize: '1.05em',
+            },
+        },
+
+        [theme.breakpoints.down('xs')]: {
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            
+            '& > p': {
+                fontSize: '0.9em',
+            },
+        },
+    },
+    
+    thumbsUpImage: {
+        height: 32,
+        marginLeft: 4,
+        transform: 'translateY(4px)',
+
+        [theme.breakpoints.down('xs')]: {
+            height: 16,
         },
     },
 
     articleReadCount: {
         fontSize: '2em',
         fontWeight: 'bold',
+        
+        [theme.breakpoints.down('md')]: {
+            fontSize: '1.75em',
+        },
+        
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '1.5em',
+        },
     },
 
     progressRoot: {
@@ -146,4 +190,26 @@ export default theme => ({
         background: 'linear-gradient(to right, #DCE35B, #45B649)', 
     },
 
+    articlesSection: {
+    },
+    
+    sectionTitle: {
+        fontSize: '1.2em',
+        textAlign: 'center',
+        textTransform: 'uppercase',
+        fontWeight: 'bold',
+        color: theme.palette.secondary.main,
+    },
+
+    listRoot: {
+        padding: 4 * theme.spacing.unit,
+        
+        '& > li': {
+            marginBottom: 2 * theme.spacing.unit,
+        },
+
+        [theme.breakpoints.down('xs')]: {
+            padding: theme.spacing.unit,
+        },
+    },
 })
