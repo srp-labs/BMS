@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import { Link } from 'react-router-dom';
 import {
     withStyles,
     Typography,
@@ -17,6 +18,12 @@ const Footer = ({ className, classes, ...props }) => {
             </Typography>
             <Typography className={classes.text}>
                 Content & Graphics © 2019 SRP Labs
+            </Typography>
+
+            <Typography className={classes.text}>
+                <Link className={classes.link} to="">Facebook</Link>
+                <Link className={classes.link} to="">Github</Link>
+                <span className={classes.link}>Mail us at contact.reactdj@gmail.com</span>
             </Typography>
         </div>
     )

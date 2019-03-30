@@ -102,6 +102,7 @@ class ArticleCard extends React.Component {
                     type: 'success',
                     text: 'Marked as Read !!',
                     timer: 3000,
+                    onClose: () => window.location.reload()
                 })
             else 
                 reactSwal.fire({
@@ -126,9 +127,9 @@ class ArticleCard extends React.Component {
 
         if (isLoggedIn) {
             reactSwal.fire({
-                title: 'Rate your Experience',
+                title: <Typography>Rate your Experience</Typography>,
                 html: <RatingComponent setRating={(rating) => this.setState({ rating })} />,
-                onClose: this.submit,
+                preConfirm: this.submit,
                 customClass: { content: 'sweet-alert-content' }   //defined in index.html style tag
             });
         }
