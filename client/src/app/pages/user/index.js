@@ -8,6 +8,8 @@ import {
     List,
 } from '@material-ui/core';
 
+import { PieChart, Pie, ResponsiveContainer, Cell } from 'recharts';
+
 import API from '../../../services/api';
 import { PageContainer, ArticleListItem } from '../../../components';
 import styles from './styles';
@@ -15,6 +17,14 @@ import styles from './styles';
 import AccountImage from '../../../../assets/images/logo.svg';
 import Badge from '../../../../assets/images/medal.svg';
 import ThumbsUp from '../../../../assets/images/thumbs-up-emoji.svg';
+
+const data = [ 
+    {name: 'Group A', value: 400}, 
+    {name: 'Group B', value: 300},
+    {name: 'Group C', value: 300},
+];
+
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 class User extends React.Component {
     state = {
@@ -86,6 +96,26 @@ class User extends React.Component {
                             root: classes.progressRoot,
                             barColorPrimary: classes.progressBarColorPrimary,
                         }} />
+                </div>
+                        
+                <div className={classes.articlesSection}>
+                    <Typography className={classes.sectionTitle} color="secondary">
+                        <big>S</big>tatistics
+                    </Typography>
+                    
+                    <PieChart width={600} height={600} >
+                        <Pie
+                            data={data} 
+                            cx={300} 
+                            cy={300} 
+                            labelLine={false}
+                            outerRadius={240} 
+                            fill="#8884d8">
+                            {
+                                data.map((entry, index) => <Cell key={index} fill={COLORS[index % COLORS.length]}/>)
+                            }
+                        </Pie>
+                    </PieChart>
                 </div>
 
                 {/*  List of all read/completed articles goes here. */}
