@@ -12,6 +12,7 @@ from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView,RetrieveAPIView
 from readers.models import *
+from readers.serializers import *
 from blogs.models import *
 from server.settings import SECRET_KEY
 from time import gmtime, strftime
@@ -79,7 +80,8 @@ class MarkReadListView(APIView):
 
 				username = request.GET.get('username')
 				if username:
-					filters['user'] = User.objects.get(username=username)
+					user = User.objects.get(username=username)
+					filters['reader'] = Reader.objects.get(user=user)
 				
 				reads = MarkAsRead.objects.filter(**filters)
 				serializer = MarkAsReadSerializer(reads,many=True)
@@ -112,3 +114,63 @@ class MarkReadListView(APIView):
 			print(e)
 			API_STATUS = 'REQUEST FAILURE'
 			return Response({'status':API_STATUS})
+
+
+class ReaderDetailView(APIView):
+
+	def get(self,request):
+
+		access_group = ['READER']
+		API_STATUS = "SUCCESS"
+
+		try :
+
+			if API_STATUS == 'SUCCESS' :
+				
+				filters = {}
+
+				username = request.GET.get('username')
+				if username:
+					filters['user'] = User.objects.get(username=username)
+				
+				reader = Reader.objects.get(**filters)
+				serializer = ReaderSerializer(reader)
+				return Response({'status': API_STATUS, 'detail': serializer.data})
+
+			else :
+				return Response({'status': API_STATUS})
+
+
+		except Exception as e:
+
+			API_STATUS = 'REQUEST FAILURE'
+			return Response({'status': API_STATUS})
+
+
+class ProgressView(APIView):
+
+	def get(self,request):
+
+		access_group = ['READER']
+		API_STATUS = "SUCCESS"
+
+		try :
+
+			if API_STATUS == 'SUCCESS' :
+				
+				filters = {}
+
+				email = request.GET.get('email')
+				if email:
+					reader = Reader.objects.get(email=email)
+
+				return JsonResponse({'status': API_STATUS, 'progress': '78.50'})
+
+			else :
+				return JsonResponse({'status': API_STATUS})
+
+
+		except Exception as e:
+
+			API_STATUS = 'REQUEST FAILURE'
+			return Response({'status': API_STATUS})
