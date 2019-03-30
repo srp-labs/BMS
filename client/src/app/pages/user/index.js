@@ -5,44 +5,63 @@ import {
     Typography,
     Grid,
     LinearProgress,
+    List,
 } from '@material-ui/core';
 
+import { PieChart, Pie, ResponsiveContainer, Cell } from 'recharts';
+
 import API from '../../../services/api';
-import { PageContainer } from '../../../components';
+import { PageContainer, ArticleListItem } from '../../../components';
 import styles from './styles';
 
 import AccountImage from '../../../../assets/images/logo.svg';
 import Badge from '../../../../assets/images/medal.svg';
 import ThumbsUp from '../../../../assets/images/thumbs-up-emoji.svg';
 
+const data = [ 
+    {name: 'Group A', value: 400}, 
+    {name: 'Group B', value: 300},
+    {name: 'Group C', value: 300},
+];
+
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+
 class User extends React.Component {
     state = {
         loading: true,
+        list: [],
     };
     
     componentDidMount() {
-        setTimeout(() => this.setState({ loading: false }), 1500);
+        API.get('blogs/')
+            .then(response => this.setState({ list: response.data.list, loading: false }))
+            .catch(console.error);
     }
 
     render() {
         const { classes } = this.props;
 
-        const { loading } = this.state;
+        const { loading, list } = this.state;
 
         return (
             <PageContainer loading={loading} className={classes.container}>
                 <div className={classes.userInfoSection}>
                     <div className={classes.userInfoContent}>
+                        {/* Image goes here */}    
                         <img src={AccountImage} className={classes.userImage} />
                         <Typography className={classes.name}>
+                            {/* Name goes here */}
                             Adam , the First
                         </Typography>
                         <div className={classes.extraTextWrapper}>
+                            {/* Email goes here */}    
                             <Typography className={classes.extra}>icandoit@nike.slogan</Typography>
+                            {/* Region goes here */}    
                             <Typography className={classes.extra}>Bermuda Triangle</Typography>
                         </div>
 
                         <div className={classes.badges}>
+                            {/* Need an array of badges, with some type - frontend, backend so as to choose from predefined images. */}
                             {
                                 [0, 1, 2].map((badge, index) => 
                                     <img key={index} src={Badge} className={classes.badge} />
@@ -55,26 +74,64 @@ class User extends React.Component {
                 <div className={classes.progressSection}>
                     <div className={classes.progressMessage}>
                         <Typography>
+                           {/* Some message based on progress goes here. */}
                             Nice Going. Keep up the good work. 
-                            <img src={ThumbsUp} style={{ height: 32, marginLeft: 4, transform: 'translateY(4px)', }}/>	
+                            <img src={ThumbsUp} className={classes.thumbsUpImage}/>	
                         </Typography>
                         <Typography>
                             Articles Read: 
-                            <span className={classes.articleReadCount}>84</span>
+                            <span className={classes.articleReadCount}>
+                                {/* Articles Read count goes here */}
+                                84
+                            </span>
+                            {/* Articles total count goes here. */}
                             / 100
                         </Typography>
                     </div>
                     <LinearProgress 
                         variant="determinate" 
+                        /* Articles Read count goes here */
                         value={84} 
                         classes={{
                             root: classes.progressRoot,
                             barColorPrimary: classes.progressBarColorPrimary,
                         }} />
                 </div>
-
+                        
                 <div className={classes.articlesSection}>
-                            
+                    <Typography className={classes.sectionTitle} color="secondary">
+                        <big>S</big>tatistics
+                    </Typography>
+                    
+                    <PieChart width={600} height={600} >
+                        <Pie
+                            data={data} 
+                            cx={300} 
+                            cy={300} 
+                            labelLine={false}
+                            outerRadius={240} 
+                            fill="#8884d8">
+                            {
+                                data.map((entry, index) => <Cell key={index} fill={COLORS[index % COLORS.length]}/>)
+                            }
+                        </Pie>
+                    </PieChart>
+                </div>
+
+                {/*  List of all read/completed articles goes here. */}
+                <div className={classes.articlesSection}>
+                    <Typography className={classes.sectionTitle} color="secondary">
+                        <big>C</big>ompleted <big>A</big>rticles
+                    </Typography>
+                    <List className={classes.listRoot}>
+                        {
+                            list.map((article, index) =>
+                                <ArticleListItem 
+                                    key={index}
+                                    data={article} />
+                            )
+                        }
+                    </List>
                 </div>
             </PageContainer>
         )
