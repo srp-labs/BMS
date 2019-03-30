@@ -17,7 +17,7 @@ import API from '../../../services/api';
 import { PageContainer } from '../../../components';
 import styles from './styles';
 
-import Logo from "../../../../assets/images/logo.svg";
+// import Logo from "../../../../assets/images/logo.svg";
 
 class Login extends React.Component {
     state = {
@@ -81,7 +81,7 @@ class Login extends React.Component {
         return (
             <PageContainer className={classes.container} loading={loading}>
                 <Paper className={classes.formContainer}>
-                    <img alt="IIIT-A" src={Logo} className={classes.collegeLogo} />
+                    <img alt="IIIT-A" src={'/static/images/logo.svg'} className={classes.collegeLogo} />
                     <div className={classes.formWrapper}>
                         <Typography variant="h6" className={classes.formTitle}>Login</Typography>
                         <Divider variant="middle" className={classes.formDivider} />

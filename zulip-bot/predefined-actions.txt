@@ -1,0 +1,2 @@
+show display progress covered completed@show_progress
+top popular trending@trending_posts
