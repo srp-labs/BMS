@@ -107,9 +107,6 @@ class Home extends React.Component {
                     <Typography className={classes.bannerText}>
                         We've built a simple yet powerful blog management system which allows you to manage your blogs written on different blogging sites. <br /> The system provides features such as maintaining a user-base, and tracking user's progress out-of-the-box. <br /> The system is completely open-source. We plan to incorporate an 'Opportunities' feature - that provides your <br /> blog's users with job postings bases on the reading habits. 
                     </Typography>
-                    <Typography className={classes.bannerText}>
-                        Django, React and more ...
-                    </Typography>
                 </div>
     
                 <div className={classes.latestArticlesSection}>
