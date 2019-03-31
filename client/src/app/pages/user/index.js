@@ -105,11 +105,11 @@ class User extends React.Component {
             let readBlogsMap = new Map();
             readList.forEach(item => readBlogsMap.set(item.blog.id, item));
 
-            let readArticles = blogs.filter(item => readBlogsMap.has(item.id)).map(item => ({
+            let readArticles = blogs ? blogs.filter(item => readBlogsMap.has(item.id)).map(item => ({
                 ...item,
                 rating: readBlogsMap.get(item.id).rating,
                 read_date: readBlogsMap.get(item.id).date,
-            })).sort(this.sortByDate);
+            })).sort(this.sortByDate) : [];
 
             let progress = this.getProgressStats(readArticles, blogs);
 
