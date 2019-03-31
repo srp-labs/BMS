@@ -6,6 +6,7 @@ class ZulipBot(object):
         self.client = zulip.Client(site="https://reactdj.zulipchat.com/api/")
 
     def process(self, msg):
+        print(msg)
         reply = get_result(msg)
         print(msg['content'], reply)
         self.client.send_message({

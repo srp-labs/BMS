@@ -12,7 +12,7 @@ def show_progress(msg):
     res = requests.get(url=server_url+'progress/', params={'email': email })
     data = res.json()
     if (data['status']=='SUCCESS'):
-        return 'You have completed ' + data['progress'] + '% of the series :happy:'
+        return 'Hi Maharshi, Awesome!! you have completed ' + data['progress'] + '% of the series :happy:'
     else:
         return ''
 
