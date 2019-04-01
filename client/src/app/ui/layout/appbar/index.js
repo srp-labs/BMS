@@ -140,9 +140,9 @@ class Appbar extends React.Component {
                                             <MenuItem onClick={this.handleCloseSmallScreen}>
                                                 <AppLink to="/articles" label="Articles" />
                                             </MenuItem>
-                                            <MenuItem onClick={this.handleCloseSmallScreen}>
+                                            {/* <MenuItem onClick={this.handleCloseSmallScreen}>
                                                 <AppLink to="/support" label="Support" />
-                                            </MenuItem>
+                                            </MenuItem> */}
                                             <MenuItem onClick={this.handleCloseSmallScreen}>
                                                 <AppLink to="/about" label="About" />
                                             </MenuItem>
