@@ -37,6 +37,20 @@ export default theme => ({
             opacity: 1,
         },
     },
+    noUnderline: {
+        '&.active': {
+            cursor: 'initial',
+            
+            '&:after': {
+                transform: 'translate(-50%, 0%)',
+                opacity: 0,
+            },
+        },
+
+        '&:hover:after': {
+            opacity: 0,
+        },
+    },
     text: {
         display: 'inline',
         color: theme.palette.getContrastText('#008f68'),

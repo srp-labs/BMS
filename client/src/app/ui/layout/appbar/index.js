@@ -29,7 +29,7 @@ import {
 import AppLink from './link';
 import styles from './styles';
 
-// import HeaderLogo from '../../../../../assets/images/header-logo.png';
+import HeaderLogo from '../../../../../assets/images/header-logo.png';
 
 class Appbar extends React.Component {
     state = {
@@ -77,17 +77,17 @@ class Appbar extends React.Component {
             >
                 <Toolbar className={classes.toolbar}>
                     <Hidden smDown>
-                        <img src={'/static/images/header-logo.png'} style={{ height: 56 }} />    
+                        {/* <AppLink to="/home" noUnderline label={<img src={'/static/images/header-logo.png'} style={{ height: 56 }} />} /> */}
                         <div className={classes.linksContainer}>
-                            <AppLink to="/home" label="Home" />
+                            <AppLink to="/home" label={<img src={HeaderLogo} style={{ height: 32 }} />} />
                             <AppLink to="/articles" label="Articles" />
-                            <AppLink to="/support" label="Support" />
+                            {/* <AppLink to="/support" label="Support" /> */}
                             <AppLink to="/about" label="About Us" />
                         </div>
                         {
                             isLoggedIn ?
                             <div style={{ position: 'relative', display: 'flex', flexDirection: 'row', alignItems: 'center', fontSize: '1em' }}>
-                                <Typography style={{ fontSize: '1em' }}>Hi, {username.charAt(0).toUpperCase() + username.slice(1)} </Typography>
+                                <Typography style={{ fontSize: '1em' }}>Hi, {username}</Typography>
                                 <IconButton buttonRef={node => this.anchorEl = node} onClick={this.handleToggle}>
                                     <Settings className={classes.icon} />    
                                 </IconButton>
@@ -121,6 +121,8 @@ class Appbar extends React.Component {
                         }                
                     </Hidden>
                     <Hidden mdUp>
+                        <AppLink to="/home" noUnderline label={<img src={HeaderLogo} style={{ height: 56 }} />} style={{ flexGrow: 2 }} />
+    
                         <IconButton style={{ flex: 1, justifyContent: 'flex-end' }} buttonRef={node => this.anchorElSmallScreen = node } onClick={this.handleSmallScreen}>
                             <MenuIcon className={classes.icon} />
                         </IconButton>

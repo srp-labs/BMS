@@ -22,9 +22,9 @@ const developers = [
         image: '/static/images/jatin.jpg',
         role: "Backend Developer",
         links: {
-            github: "",
-            facebook: "",
-            linkedin: "",
+            github: "https://github.com/de-cryptor",
+            facebook: "https://www.facebook.com/jatin.goel.777",
+            linkedin: "https://in.linkedin.com/in/de-cryptor",
         }
     },
     {
@@ -32,21 +32,21 @@ const developers = [
         image: '/static/images/maharshi.jpg',
         role: "Frontend Developer",
         links: {
-            github: "",
-            facebook: "",
-            linkedin: "",
+            github: "https://github.com/Strategist-Roy",
+            facebook: "https://www.facebook.com/strategist.roy",
+            linkedin: "https://in.linkedin.com/in/maharshiroy",
         }
     },
-    // {
-    //     name: "Yogesh Gupta",
-    //     image: Yogesh,
-    //     role: "Frontend Developer",
-    //     links: {
-    //         github: "",
-    //         facebook: "",
-    //         linkedin: "",
-    //     }
-    // }
+    {
+        name: "Yogesh Gupta",
+        image: '/static/images/yogesh.jpg',
+        role: "Frontend Developer",
+        links: {
+            github: "https://github.com/Cryzek",
+            facebook: "https://www.facebook.com/Cryzek",
+            linkedin: "https://in.linkedin.com/in/yogesh-gupta-91009511a",
+        }
+    }
 ]
 
 const About = ({classes, ...props}) => {
@@ -61,7 +61,7 @@ const About = ({classes, ...props}) => {
                     Team from IIIT-Allahabad (Graduands 2019) was part of software development team of <a className={classes.anchor} target="_blank" href="https://aviral.iiita.ac.in/">Aviral Project</a> for the duration January 2018 to March 2019. The objective of the project was to develop Secured , 
                     Flexible and Robust Software for Admission, Assessment, 
                     Award Section based on Credit Choice Linked Continuous Assessment 
-                    and Award Ordinance wef from July 2018. We contributed in Design, Development and Deployment and learnt a lot 
+                    and Award Ordinance w.e.f. from July 2018. We contributed in Design, Development and Deployment and learnt a lot 
                     about cutting-edge technologies like Django and React JS. We want to share our experience through a series of tutorials on 
                     <a className={classes.anchor} target="_blank" href="https://medium.com/@srplabs.in"> Medium</a>
                 </Typography>
@@ -80,13 +80,13 @@ const About = ({classes, ...props}) => {
                                     <Typography className={classes.memberText}>{member.name}</Typography>
                                     <Typography className={classes.memberText}>{member.role}</Typography>
                                     <div className={classes.linksSection}>
-                                        <a href={member.links.github}>
-                                            <img className={classes.linkImage} src={'/static/images/github-logo.svg'} style={{ color: 'blue' }} />
+                                        <a href={member.links.github} target="_blank">
+                                            <img className={classes.linkImage} src={'/static/images/github-logo.svg'} />
                                         </a>
-                                        <a href={member.links.facebook}>
+                                        <a href={member.links.facebook} target="_blank">
                                             <img className={classes.linkImage} src={'/static/images/facebook-logo.svg'} />
                                         </a>
-                                        <a href={member.links.linkedin}>
+                                        <a href={member.links.linkedin} target="_blank">
                                             <img className={classes.linkImage} src={'/static/images/linkedin-logo.svg'} />
                                         </a>
                                     </div>
