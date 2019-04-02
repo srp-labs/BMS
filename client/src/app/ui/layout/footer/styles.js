@@ -1,3 +1,5 @@
 export default (theme) => ({
-    
+    footer: {
+        
+    }
 })  
