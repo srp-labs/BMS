@@ -12,36 +12,32 @@ const fontFamily = [
 
 export const light = createMuiTheme({
     palette: {
-        primary: {
-            ...colors.primary,
-        },
-        secondary: {
-            ...colors.secondary,
-        },
-        background: {
-            body: '#222831',
-            appBar: '#f5f5f5',
-            // App only properties.
-            appBarGradient: 'linear-gradient(to right, #302e24, #28313e)',
-        },
+        primary: colors.primary,
+        secondary: colors.secondary,
         text: {
             primary: '#FFF',
+        },
+        
+        // App only properties.
+        background: {
+            body: '#222831',
+            appBar: '#F5F5F5',
+
+            appBarGradient: 'linear-gradient(to right, #302e24, #28313e)',
         },
 
         // App only properties.
         articleColors: {
-            // App only properties.
             difficulty: {
-                'Easy': "#8BC34A",
-                'Medium': "#ff982e",
-                'Advanced': "#FF5722",
+                'Easy': '8BC34A',
+                'Medium': '#FF982E',
+                'Advanced': '#FF5722',
             },
-            // App only properties.
             type: {
-                'frontend': "#0088FE",
-                'backend': "#00C49F",
-                'setup': "#FFBB28",
-                'noteworthy': "#000000",
+                'frontend': '#0088FE',
+                'backend': '#00C49F',
+                'setup': '#FFBB28',
+                'noteworthy': '#000000',
             },
         }
     },
@@ -51,21 +47,13 @@ export const light = createMuiTheme({
     },
     props: {
         MuiButton: {
-            variant: "contained",
-            color: "primary"
+            variant: 'contained',
+            color: 'primary'
         },
         MuiMenuItem: {
             style: {
-                color: "black",
+                color: 'black',
             },
         },
     },
-    overrides: {
-    }
-})
-
-export const dark = createMuiTheme({
-    typography: {
-        useNextVariants: true,
-    },
-})
+});
