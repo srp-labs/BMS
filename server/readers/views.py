@@ -164,7 +164,7 @@ class ProgressView(APIView):
 				if email:
 					reader = Reader.objects.get(email=email)
 
-				return JsonResponse({'status': API_STATUS, 'progress': '78.50'})
+				return JsonResponse({'status': API_STATUS, 'progress': '48'})
 
 			else :
 				return JsonResponse({'status': API_STATUS})

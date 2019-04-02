@@ -11,7 +11,7 @@ const UnderDevelopment = ({ classes, ...props }) => {
     return (
         <div className={classes.root} {...props}>
             <img src={'/static/images/under-construction.svg'} className={classes.image} />
-            <Typography className={classes.text}>Working on it.!!</Typography>
+            <Typography className={classes.text}>Redirecting to Support...</Typography>
         </div>
     )
 }

@@ -22,11 +22,7 @@ const ArticleListItem = ({ data, history, theme, classes, ...props }) => {
     return (
         <ListItem className={classes.root} onClick={openArticle}>
             <ListItemAvatar>
-                {
-                    data.thumbnail ?
-                        <Avatar src={data.thumbnail} /> :
-                        <Avatar src={'/static/images/test1.jpeg'} />
-                }
+                <Avatar src={'/static/images/'+data.id+'.jpeg'} /> 
             </ListItemAvatar>
             <ListItemText
                 classes={{

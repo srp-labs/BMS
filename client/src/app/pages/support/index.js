@@ -11,6 +11,10 @@ class Support extends React.Component {
         loading: false,
     };
 
+    componentDidMount() {
+        window.location = "https://reactdj.zulipchat.com/";
+    }
+
     render() {
         const { loading } = this.state;
 

@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core';
 import styles from './styles';
 
-const Link = ({ label, to, className, classes, ...props}) => {
+const Link = ({ label, to, noUnderline, className, classes, ...props}) => {
     const formatter = (text, index) => {
         let firstLetter = text[0], remaining = text.slice(1);
 
@@ -16,14 +16,18 @@ const Link = ({ label, to, className, classes, ...props}) => {
         </Typography>
     };
 
-    let styledLabel = label.split(' ').map(formatter);
+    let labelChild = label;
+    if(typeof label === "string") {
+        labelChild = label.split(' ').map(formatter);
+    }
 
     return (
         <NavLink
             to={to}
-            className={classnames(classes.root, className)}
+            className={classnames(classes.root, noUnderline && classes.noUnderline, className)}
+            {...props}
         >
-            {styledLabel}
+            {labelChild}
         </NavLink>
     )
 }
